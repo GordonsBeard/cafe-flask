@@ -1,0 +1,14 @@
+body { font-size: 14px; text-align: center; background-color: #0F5F85; font-family: 'Open Sans', sans-serif; background-image:url('tmug.png'); background-position: bottom right; background-repeat: no-repeat; background-attachment: fixed; }
+
+h1 { font-size: 28px; font-weight: bold; }
+h3 { font-size: 20px; font-weight: bold; }
+h4 { font-size: 16px; font-weight: bold; margin-bottom: 15px; }
+
+h4::before { content: "» " }
+
+strong { font-weight: bold; }
+em { font-style: italic; }
+
+#container { text-align: left; width: 80%; min-width: 500px; margin-left: auto; margin-right: auto; }
+
+.section { background-color: #787D9F; margin-top: 15px; padding: 15px; }
