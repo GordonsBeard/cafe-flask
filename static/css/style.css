@@ -1,11 +1,12 @@
 body { 
     font-size: 14px; 
     font-family: 'Open Sans', sans-serif; 
-    background-image:url('/img/zigzag_@2X.png'); 
+    background-color: #CE534D;
 }
 
 a {
-    color: darkgrey;
+    color: black;
+    font-weight: bold;
 }
 
 h1 { 
@@ -16,39 +17,185 @@ h1 {
 h3 { font-size: 20px; font-weight: bold; }
 h4 { font-size: 16px; font-weight: bold; margin-bottom: 15px; }
 
-h4::before { content: "» " }
-
 strong { font-weight: bold; }
 em { font-style: italic; }
 
 #top {
     display: block;
-    height: 200px;
-    width: 100%;
-    text-align: right;
+    text-align: center;
+    padding-bottom: 20px;
+    background-color: #DED4B9;
 }
 
-#top h1 {
-    font-family: 'Poiret One', cursive;
-    font-size: 72px;
-    background-color: #F6F6F6;
+.title {
+    font-size: 24px;
+}
 
+.miniheader {
+    font-family: 'Oswald', sans-seif;
+    font-size: 28px;
+    font-variant: small-caps;
     display: block;
-    line-height: 300px;
+    text-align: right;
+    margin-top: 20px;
+    padding: 0 50px 0 0;
+}
+
+#wrapper {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #middle { 
+    padding-top: 100px;
+    background-color: #DED4B9;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-image: url('../img/black_tmug_100.png');
+    text-align: center;
     display: block;
-    width: 100%;
-    height: 800px;
-    background-color: #2B2B2B;
+    min-height: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+#bio {
+    background-repeat: no-repeat;
+    background-position: left;
+    height: 80px;
+    display: block;
+    padding-left: 100px;
+    text-align: left;
+}
+
+#bio p {
+    font-size: 16px;
+    line-height: 140%;
+}
+
 
 #bottom {
-    width: 100%;
-    height: 300px;
-    background-color: #F6F6F6;
+    text-align: right;
+    padding: 5px;
+}
+table {
+    border: 1px solid blue;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#welcome { background-color: transparent; }
-#welcome h4::before { content: "" }
+div .server {
+    display: inline-block;
+    width: 450px;
+    height: 150px;
+    margin: 2px;
+    border-radius: 10px;
+}
+
+.server span {
+    display: block;
+}
+
+.server .info {
+    font-family: 'Open Sans', sans-seif; 
+    font-size: 12px;
+    font-weight: bold;
+
+    text-align: center;
+
+    color: white;
+    display: block;
+    background-image: url('../img/infobg.png');
+
+}
+
+span .game {
+    font-weight: bold;
+    margin-top: 90px;
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+    text-align: right;
+}
+
+span .ip {
+    padding: 3px;
+    text-align: left;
+}
+
+span .status {
+    display: none;
+    padding: 3px;
+    text-align: left;
+    border: 0px 0px 0px 10px;
+}
+
+div #tf2 {
+    background-image: url('../img/dustbowl.jpg');
+    background-position: 0px -25px;
+}
+
+div #mvm {
+    background-image: url('../img/mvm_decoy.jpg');
+    background-position: 0px -25px;
+}
+
+div #sven {
+    background-image: url('../img/svencoop.jpg');
+    background-position: 0px -55px;
+}
+
+div #csgo {
+    background-image: url('../img/de_seaside.jpg');
+    background-position: 0px 0px;
+}
+
+div .smallbox {
+    border-radius: 10px;
+    display: inline-block;
+    width: 225px;
+    height: 100px;
+    margin: 5px;
+    overflow: hidden;
+    font-family: 'Andale Mono', 'Open Sans'; 
+}
+
+div .smallbox .name {
+    font-weight: bold;
+    display: block;
+    background-color: #64B6B1;
+}
+
+div .smallbox .link {
+    font-size: 12px;
+    padding-top: 2px;
+    display: block;
+    background-image: url('../img/grey_transparent.png');
+}
+
+div .smallbox .sublink {
+    font-size: 12px;
+    display: block;
+    background-image: url('../img/grey_transparent.png');
+    padding-bottom: 2px
+}
+
+
+div #irc {
+    background-image: url('../img/irc.png');
+}
+
+div #mumble {
+    background-image: url('../img/mumble.png');
+}
+
+div #cafegroup {
+    background-image: url('../img/cafe_steamgroup.jpg');
+}
+
+div #fightclub {
+    background-image: url('../img/fightclub_group.jpg');
+}
+

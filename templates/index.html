@@ -2,48 +2,69 @@
 <html>
     <head>
         <title>Cafe of Broken Dreams</title>
-        <link href='http://fonts.googleapis.com/css?family=Poiret+One|Open+Sans' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/css/reset.css" />
-        <link rel="stylesheet" href="/css/style.css" />
+        <link href='http://fonts.googleapis.com/css?family=Poiret+One|Open+Sans|Oswald:700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/static/css/reset.css" />
+        <link rel="stylesheet" href="/static/css/style.css" />
+        <link rel="icon" type="image/png" href="/static/img/favicon.png">
     </head>
     <body>
-        <div id="top">
-            <h1 class="header">Cafe of Broken Dreams</h1>
-        </div>
         <div id="middle">
-            <div class="section" id="welcome">
-                <h4>Welcome to the Cafe</h4>
-                <p>Forged from the depths of cp_dustbowl, the Cafe is a group of <s>friends</s> people tries to find meaning in the post-peak-TF2 era.</p>
+            <div id="bio">
+                <p>The <span class="title">Cafe of Broken Dreams</span> is a <s>elite</s> group of elite video-gamers, hailing from the pre F2P-era of Team Fortress 2. We play an assortment of video games now and sometimes host events. Most of the time we sit in IRC and complain about how bad video games have become. Join us!</p>
             </div>
-
-            <div class="section">
-                <h4>What's New?</h4>
-                <p><em>4/10/14</em> <strong>You would not be wrong in thinking the website looks different.</strong> It does. It might look better later. Don't count on it.</p>
+            <span class="miniheader">servers</span>
+            <div id="wrapper">
+                <div id="tf2" class="server">
+                    <span class="info">
+                        <span class="game">Team Fortress 2</span>
+                        <span class="ip">cafeofbrokendreams.com:27015</span>
+                        <span class="status">0/24 [<em>ctf_dungeons_a1</em>]</span>
+                    </span>
+                </div>
+                <div id="mvm" class="server">
+                    <span class="info">
+                        <span class="game">TF2 - Mann vs Machine</span>
+                        <span class="ip">cafeofbrokendreams.com:27666</span>
+                        <span class="status">0/6 [<em>mvm_bigrock</em>]</span>
+                    </span>
+                </div>
+                <div id="sven" class="server">
+                    <span class="info">
+                        <span class="game">Sven-Coop</span>
+                        <span class="ip">cafeofbrokendreams.com:28000</span>
+                        <span class="status">0/12 [<em>-HL_SP_OpFor_Portal</em>]</span>
+                    </span>
+                </div>
+                <div id="csgo" class="server">
+                    <span class="info">
+                        <span class="game">Counter-Strike: Global Offensive</span>
+                        <span class="ip">cafeofbrokendreams.com:42674</span>
+                        <span class="status">0/12 [<em>de_seaside</em>]</span>
+                    </span>
+                </div>
+            </div><!-- wrapper -->
+            <span class="miniheader">community</span>
+            <div id="irc" class="smallbox">
+                <span class="name">IRC</span>
+                <span class="link">irc.gamesuerge.net</span>
+                <span class="sublink">#cafe</span>
             </div>
-            <div class="section">
-                <h4>Servers</h4>
-                <ul>
-                    <li>Team Fortress 2 - cafeofbrokendreams.com:27015</li>
-                    <li>TF2: Mann vs Machine - cafeofbrokendreams.com:27666</li>
-                    <li>Sven-Coop - cafeofbrokendreams.com:28000</li>
-                    <li>Counter-Strike: GO - cafeofbrokendreams.com:27666</li>
-                    <li>Kaillera - cafeofbrokendreams.com:27888</li>
-                    <li>Mumble - mumble.cafeofbrokendreams.com:9010</li>
-                </ul>
+            <div id="mumble" class="smallbox">
+                <span class="name">Mumble</span>
+                <span class="link">mumble.cafeofbrokendreams.com</span>
+                <span class="sublink">port 9010</span>
             </div>
-
-            <div class="section">
-                <h4>Community</h4>
-                <ul>
-                    <li>Cafe Steam group - <a href="http://steamcommunity.com/groups/cafeofbrokendreams">http://steamcommunity.com/groups/cafeofbrokendreams</a></li>
-                    <li>Cafe FIGHT CLUB steam group - <a href="http://steamcommunity.com/groups/cafefightclub">http://steamcommunity.com/groups/cafefightclub</a></li>
-                    <li>Qafe Quake Qlan - <a href="http://www.quakelive.com/#!clans/summary/206434">http://www.quakelive.com/#!clans/summary/206434</a></li>
-                    <li>IRC - irc.gamesurge.net #cafe #cafe-dota2</li>
-                </ul>
-            </div> <!-- section -->
+            <div id="cafegroup" class="smallbox">
+                <span class="name">Cafe SteamGroup</span>
+                <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams">@ Steam Community</a></span>
+            </div>
+            <div id="fightclub" class="smallbox">
+                <span class="name">Cafe FIGHT CLUB</span>
+                <span class="link"><a href="http://steamcommunity.com/groups/cafefightclub">@ Steam Community</a></span>
+            </div>
         </div> <!-- middle -->
         <div id="bottom">
-            <a href="https://github.com/GordonsBeard/cafe-flask">github repro</a>
-        </div>
+            <strong>Cafe of Broken Dreams est. 2009</strong>
+        </div> <!-- bottom -->
     </body>
 </html>
