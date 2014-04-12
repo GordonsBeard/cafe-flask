@@ -113,7 +113,7 @@ div .server {
 
 span .game {
     font-weight: bold;
-    margin-top: 90px;
+    margin-top: 80px;
     color: white;
     font-size: 16px;
     padding: 5px;
@@ -126,7 +126,6 @@ span .ip {
 }
 
 span .status {
-    display: none;
     padding: 3px;
     text-align: left;
     border: 0px 0px 0px 10px;

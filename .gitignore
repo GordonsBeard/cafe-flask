@@ -73,3 +73,7 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# Cafe Site files
+server_statuses
+SourceLib/

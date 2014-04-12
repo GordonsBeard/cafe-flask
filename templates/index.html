@@ -10,40 +10,21 @@
     <body>
         <div id="middle">
             <div id="bio">
-                <p>The <span class="title">Cafe of Broken Dreams</span> is a <s>elite</s> group of elite video-gamers, hailing from the pre F2P-era of Team Fortress 2. We play an assortment of video games now and sometimes host events. Most of the time we sit in IRC and complain about how bad video games have become. Join us!</p>
+                <p>The <span class="title">Cafe of Broken Dreams</span> is a <s>elite</s> group of video-gamers, hailing from the pre F2P-era of Team Fortress 2. We play an assortment of video games now and sometimes host events. Most of the time we sit in IRC and complain about how bad video games have become. Join us!</p>
             </div>
-            <span class="miniheader">servers</span>
             <div id="wrapper">
-                <div id="tf2" class="server">
+            <span class="miniheader">servers</span>
+                {% for server in serverinfo.keys() %}
+                <div id="{{ server }}" class="server">
                     <span class="info">
-                        <span class="game">Team Fortress 2</span>
-                        <span class="ip">cafeofbrokendreams.com:27015</span>
-                        <span class="status">0/24 [<em>ctf_dungeons_a1</em>]</span>
+                        <span class="game">{{ serverinfo[server]['gamename'] }}</span>
+                        <span class="ip">{{ serverinfo[server]['ip'] }}:{{ serverinfo[server]['port'] }}</span>
+                        <span class="status">{% if not serverinfo[server]['error'] %}{{ serverinfo[server]['numplayers'] }}/{{ serverinfo[server]['maxplayers'] }} [<em>{{ serverinfo[server]['map'] }}</em>]{% else %}server is down!{% endif %}</span>
                     </span>
                 </div>
-                <div id="mvm" class="server">
-                    <span class="info">
-                        <span class="game">TF2 - Mann vs Machine</span>
-                        <span class="ip">cafeofbrokendreams.com:27666</span>
-                        <span class="status">0/6 [<em>mvm_bigrock</em>]</span>
-                    </span>
-                </div>
-                <div id="sven" class="server">
-                    <span class="info">
-                        <span class="game">Sven-Coop</span>
-                        <span class="ip">cafeofbrokendreams.com:28000</span>
-                        <span class="status">0/12 [<em>-HL_SP_OpFor_Portal</em>]</span>
-                    </span>
-                </div>
-                <div id="csgo" class="server">
-                    <span class="info">
-                        <span class="game">Counter-Strike: Global Offensive</span>
-                        <span class="ip">cafeofbrokendreams.com:42674</span>
-                        <span class="status">0/12 [<em>de_seaside</em>]</span>
-                    </span>
-                </div>
-            </div><!-- wrapper -->
+                {% endfor %}
             <span class="miniheader">community</span>
+            </div><!-- wrapper -->
             <div id="irc" class="smallbox">
                 <span class="name">IRC</span>
                 <span class="link">irc.gamesuerge.net</span>
