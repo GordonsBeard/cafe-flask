@@ -1,45 +1,24 @@
-body { 
+html, body {
+    height: 100%;
     font-size: 14px; 
     font-family: 'Open Sans', sans-serif; 
-    background-color: #CE534D;
+    background-image: url('../img/congruent_outline.png');
 }
 
-a {
-    color: black;
-    font-weight: bold;
-}
+a { color: #383838; font-weight: bold; }
 
-h1 { 
-    font-size: 28px; 
-    font-weight: bold; 
-}
-
+h1 { font-size: 28px; font-weight: bold; }
+h2 { font-size: 24px; font-weight: bold; }
 h3 { font-size: 20px; font-weight: bold; }
 h4 { font-size: 16px; font-weight: bold; margin-bottom: 15px; }
 
 strong { font-weight: bold; }
 em { font-style: italic; }
 
-#top {
-    display: block;
-    text-align: center;
-    padding-bottom: 20px;
-    background-color: #DED4B9;
-}
+/* Main Elements */
+#container { }
 
-.title {
-    font-size: 24px;
-}
-
-.miniheader {
-    font-family: 'Oswald', sans-seif;
-    font-size: 28px;
-    font-variant: small-caps;
-    display: block;
-    text-align: right;
-    margin-top: 20px;
-    padding: 0 50px 0 0;
-}
+#middle { width: 100%; background-color: #DED4B9; text-align: center; padding-bottom: 15px;}
 
 #wrapper {
     max-width: 1000px;
@@ -47,25 +26,12 @@ em { font-style: italic; }
     margin-right: auto;
 }
 
-#middle { 
-    padding-top: 100px;
-    background-color: #DED4B9;
+#bio {
     background-repeat: no-repeat;
     background-position: top center;
     background-image: url('../img/black_tmug_100.png');
-    text-align: center;
+    padding-top: 100px;
     display: block;
-    min-height: 400px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#bio {
-    background-repeat: no-repeat;
-    background-position: left;
-    height: 80px;
-    display: block;
-    padding-left: 100px;
     text-align: left;
 }
 
@@ -74,16 +40,42 @@ em { font-style: italic; }
     line-height: 140%;
 }
 
-
 #bottom {
-    text-align: right;
-    padding: 5px;
+    text-align: center;
 }
-table {
-    border: 1px solid blue;
-    display: block;
+
+a.login {
+    color: #99C2D8;
+}
+
+a.logout {
+    color: #FB524F;
+}
+
+#bottom p {
+    padding: 14px;
+    color: white;
+    font-size: 14px;
+    font-family: monospace;
+}
+
+#tools {
+    background-color: #333333;
+    border: 2px solid #3C3C3C;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.flash {
+    display: block;
+    margin: 5px;
+    padding: 5px;
+    color: #c2c2c2;
+}
+
+.title {
+    font-size: 24px;
 }
 
 div .server {
@@ -94,19 +86,30 @@ div .server {
     border-radius: 10px;
 }
 
+.miniheader {
+    display: block;
+    font-family: 'Oswald', sans-seif;
+    font-size: 32px;
+    font-variant: small-caps;
+    text-align: right;
+    margin-top: 20px;
+}
+
+
+/* Server styling */
+#tf2 { background-image: url('../img/dustbowl.jpg'); background-position: 0px -25px; }
+#mvm { background-image: url('../img/mvm_decoy.jpg'); background-position: 0px -25px; }
+#sven { background-image: url('../img/svencoop.jpg'); background-position: 0px -55px; }
+#csgo { background-image: url('../img/de_seaside.jpg'); background-position: 0px 0px; }
+
+/* Server info styling */
 .server span {
     display: block;
+    color: white;
 }
 
 .server .info {
-    font-family: 'Open Sans', sans-seif; 
-    font-size: 12px;
     font-weight: bold;
-
-    text-align: center;
-
-    color: white;
-    display: block;
     background-image: url('../img/infobg.png');
 
 }
@@ -121,80 +124,46 @@ span .game {
 }
 
 span .ip {
-    padding: 3px;
+    padding-left: 5px;
     text-align: left;
 }
 
 span .status {
-    padding: 3px;
+    padding: 5px;
     text-align: left;
-    border: 0px 0px 0px 10px;
 }
 
-div #tf2 {
-    background-image: url('../img/dustbowl.jpg');
-    background-position: 0px -25px;
-}
+/* Smallbox */
+#irc { background-image: url('../img/irc.png'); }
+#mumble { background-image: url('../img/mumble.png'); }
+#cafegroup { background-image: url('../img/cafe_steamgroup.jpg'); }
+#fightclub { background-image: url('../img/fightclub_group.jpg'); }
 
-div #mvm {
-    background-image: url('../img/mvm_decoy.jpg');
-    background-position: 0px -25px;
-}
-
-div #sven {
-    background-image: url('../img/svencoop.jpg');
-    background-position: 0px -55px;
-}
-
-div #csgo {
-    background-image: url('../img/de_seaside.jpg');
-    background-position: 0px 0px;
-}
-
-div .smallbox {
+/* Smallbox info styling */
+.smallbox {
     border-radius: 10px;
     display: inline-block;
     width: 225px;
     height: 100px;
-    margin: 5px;
     overflow: hidden;
-    font-family: 'Andale Mono', 'Open Sans'; 
 }
 
-div .smallbox .name {
+.smallbox .name {
     font-weight: bold;
+    padding: 5px;
     display: block;
     background-color: #64B6B1;
 }
 
-div .smallbox .link {
-    font-size: 12px;
-    padding-top: 2px;
+.smallbox .link {
     display: block;
+    font-size: 12px;
+    padding: 2px;
     background-image: url('../img/grey_transparent.png');
 }
 
-div .smallbox .sublink {
-    font-size: 12px;
+.smallbox .sublink {
     display: block;
+    font-size: 12px;
     background-image: url('../img/grey_transparent.png');
-    padding-bottom: 2px
 }
-
-
-div #irc {
-    background-image: url('../img/irc.png');
-}
-
-div #mumble {
-    background-image: url('../img/mumble.png');
-}
-
-div #cafegroup {
-    background-image: url('../img/cafe_steamgroup.jpg');
-}
-
-div #fightclub {
-    background-image: url('../img/fightclub_group.jpg');
-}
-

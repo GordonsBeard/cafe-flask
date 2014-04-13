@@ -74,6 +74,15 @@ nosetests.xml
 .project
 .pydevproject
 
+# swaps
+*.swp
+
+# Databases
+*.db
+
 # Cafe Site files
 server_statuses
+settings.cfg
+betasite.wsgi
 SourceLib/
+flask-sqlalchemy/

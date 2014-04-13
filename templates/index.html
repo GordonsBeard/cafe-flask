@@ -9,45 +9,57 @@
     </head>
     <body>
         <div id="middle">
-            <div id="bio">
-                <p>The <span class="title">Cafe of Broken Dreams</span> is a <s>elite</s> group of video-gamers, hailing from the pre F2P-era of Team Fortress 2. We play an assortment of video games now and sometimes host events. Most of the time we sit in IRC and complain about how bad video games have become. Join us!</p>
-            </div>
             <div id="wrapper">
-            <span class="miniheader">servers</span>
-                {% if serverinfo != False %}
-                {% for server in serverinfo.keys() %}
+                <div id="bio">
+                    <p>The <span class="title">Cafe of Broken Dreams</span> is a <s>elite</s> group of video-gamers, hailing from the pre F2P-era of Team Fortress 2. We play an assortment of video games now and sometimes host events. Most of the time we sit in IRC and complain about how bad video games have become. Join us!</p>
+                </div><!-- bio -->
+                    {% if serverinfo != False %}
+                <span class="miniheader">servers</span>
+                        {% for server in serverinfo.keys() %}
                 <div id="{{ server }}" class="server">
                     <span class="info">
                         <span class="game">{{ serverinfo[server]['gamename'] }}</span>
                         <span class="ip">{{ serverinfo[server]['ip'] }}:{{ serverinfo[server]['port'] }}</span>
                         <span class="status">{% if not serverinfo[server]['error'] %}{{ serverinfo[server]['numplayers'] }}/{{ serverinfo[server]['maxplayers'] }} [<em>{{ serverinfo[server]['map'] }}</em>]{% else %}server is down!{% endif %}</span>
-                    </span>
-                </div>
-                {% endfor %}
-                {% endif %}
-            <span class="miniheader">community</span>
+                    </span><!-- info -->
+                </div><!-- server -->
+                        {% endfor %}
+                    {% endif %}
+                <span class="miniheader">community</span>
+                <div id="irc" class="smallbox">
+                    <span class="name">IRC</span>
+                    <span class="link">irc.gamesuerge.net</span>
+                    <span class="sublink">#cafe</span>
+                </div><!-- irc -->
+                <div id="mumble" class="smallbox">
+                    <span class="name">Mumble</span>
+                    <span class="link">mumble.cafeofbrokendreams.com</span>
+                    <span class="sublink">port 9010</span>
+                </div><!-- mumble -->
+                <div id="cafegroup" class="smallbox">
+                    <span class="name">Cafe SteamGroup</span>
+                    <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams">@ Steam Community</a></span>
+                </div><!-- cafegroup -->
+                <div id="fightclub" class="smallbox">
+                    <span class="name">Cafe FIGHT CLUB</span>
+                    <span class="link"><a href="http://steamcommunity.com/groups/cafefightclub">@ Steam Community</a></span>
+                </div><!-- fightclub -->
             </div><!-- wrapper -->
-            <div id="irc" class="smallbox">
-                <span class="name">IRC</span>
-                <span class="link">irc.gamesuerge.net</span>
-                <span class="sublink">#cafe</span>
-            </div>
-            <div id="mumble" class="smallbox">
-                <span class="name">Mumble</span>
-                <span class="link">mumble.cafeofbrokendreams.com</span>
-                <span class="sublink">port 9010</span>
-            </div>
-            <div id="cafegroup" class="smallbox">
-                <span class="name">Cafe SteamGroup</span>
-                <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams">@ Steam Community</a></span>
-            </div>
-            <div id="fightclub" class="smallbox">
-                <span class="name">Cafe FIGHT CLUB</span>
-                <span class="link"><a href="http://steamcommunity.com/groups/cafefightclub">@ Steam Community</a></span>
-            </div>
-        </div> <!-- middle -->
+        </div><!-- middle -->
         <div id="bottom">
-            <strong>Cafe of Broken Dreams est. 2009</strong>
+            <p>The bounty hunters, who are gathering in channel "#CAFE", will play freely without fear of risky things. They must create new dreams and films by breaking traditional styles. The work, which becomes a new genre itself, will be called... the CAFE OF BROKEN DREAMS </p>
+
+            <div id="tools">
+                {% if not g.user %}
+                <a href="{{ url_for('login') }}" class="login">Login with Steam</a>
+                    {% else %}
+                <a href="{{ url_for('logout') }}" class="logout">Logout with style</a>
+                {% endif %}
+                {% for message in get_flashed_messages() %}
+                <span class="flash">{{ message }}</div>
+                {% endfor %}
+                {% if adminflag %}<span style="display: block;">Admin!</span>{% endif %}
+            </div><!-- tools -->
         </div> <!-- bottom -->
     </body>
 </html>
