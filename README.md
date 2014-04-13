@@ -6,7 +6,6 @@ Let's learn flask. At the Cafe's expense.
 - Game server status!
 - Pointless logins via Steam!
 - Less crashing!
-- Colors!
 
 Things Used
 -----
