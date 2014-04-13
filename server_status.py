@@ -44,7 +44,9 @@ def req_server_info():
 
     # Open the server.cfg file up.
     if not os.path.exists(servercfg_filename):
+        print "No CFG! Create one you dumbass!"
         return False
+
 
     # For each server, loop through status.
     with open(servercfg_filename) as serverlist:
