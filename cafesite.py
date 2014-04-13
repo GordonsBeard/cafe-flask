@@ -79,7 +79,7 @@ def index():
     admins = app.config['ADMINS']
 
     try:
-        if g.user.steam_id in admins: adminflag = True
+        adminflag = True if g.user.steam_id in admins else False
     except AttributeError:
         adminflag = False
 
