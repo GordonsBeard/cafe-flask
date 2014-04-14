@@ -41,8 +41,17 @@ em { font-style: italic; }
 }
 
 #bottom {
+    color: #c1c1c1;
     text-align: center;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+#bottom a {
+    color: #99C2D8;
+}
+
 
 a.login {
     color: #99C2D8;
@@ -52,19 +61,81 @@ a.logout {
     color: #FB524F;
 }
 
-#bottom p {
+#bottom p.midtext {
     padding: 14px;
     color: white;
-    font-size: 14px;
+    font-size: 10px;
     font-family: monospace;
 }
 
-#tools {
+#tools, #events {
     background-color: #333333;
-    border: 2px solid #3C3C3C;
-    max-width: 800px;
+    border: 1px solid #3C3C3C;
     margin-left: auto;
     margin-right: auto;
+}
+
+#tools {
+    display: none;
+}
+
+#events {
+    text-align: left;
+}
+
+#eventholder {
+    padding: 12px;
+}
+
+.eventimage, .eventtitle, .eventdate, .eventdetails, .eventinfo { display: block; }
+.eventtitle {
+    color: white;
+    font-size: 16px;
+    text-decoration: underline;
+    text-align: center;
+}
+.eventdate {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+}
+
+.eventdetails p { line-height: 140%; margin: .5em; }
+
+.eventimage {
+    float: left;
+    margin: 10px;
+}
+
+.eventinfo {
+    text-align: right;
+    clear: both;
+    background-color: #3c3c3c;
+    padding: 5px;
+    font-size: 12px;
+}
+
+#footer {
+    display: block;
+    padding: 5px;
+    clear: both;
+    width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background-color: #DED4B9;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+#footer a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.foottxt {
+    padding: 10px; 
 }
 
 .flash {
@@ -86,15 +157,19 @@ div .server {
     border-radius: 10px;
 }
 
-.miniheader {
+.miniheader, .bottomminiheader {
     display: block;
-    font-family: 'Oswald', sans-seif;
+    font-family: 'Oswald', sans-serif;
     font-size: 32px;
     font-variant: small-caps;
     text-align: right;
     margin-top: 20px;
+    margin-bottom: 10px;
 }
 
+.bottomminiheader {
+    color: white;
+}
 
 /* Server styling */
 #tf2 { background-image: url('../img/dustbowl.jpg'); background-position: 0px -25px; }

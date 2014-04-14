@@ -47,8 +47,21 @@
             </div><!-- wrapper -->
         </div><!-- middle -->
         <div id="bottom">
-            <p>The bounty hunters, who are gathering in channel "#CAFE", will play freely without fear of risky things. They must create new dreams and films by breaking traditional styles. The work, which becomes a new genre itself, will be called... the CAFE OF BROKEN DREAMS </p>
-
+            <p class="midtext">>The bounty hunters, who are gathering in channel "#CAFE", will play freely without fear of risky things. They must create new dreams and films by breaking traditional styles. The work, which becomes a new genre itself, will be called... the CAFE OF BROKEN DREAMS </p>
+            <span class="bottomminiheader">events</span>
+            <div id="events">
+                <div class="eventholder">
+                    <span class="eventimage"><img src="/static/img/cake.png" alt="cake" /></span>
+                    <span class="eventtitle">Cafe's 5th Birthday</span>
+                    <span class="eventdate">April 18th</span>
+                    <span class="eventdetails">
+                        <p>We'll be hosting our 5th birthday celebration! What does this mean for you, the loyal viewer slash subscriber slash person who randomly stubmled across this website with no prior knowledge of what we are or who we do?</p>
+                        <p>Unlike huge galas in the years past, in this - the 2nd age of Cafe - we have decided to keep it more low key.</p> 
+                        <p>This year we will be running through <a href="http://store.steampowered.com/app/70/">Half-Life 1</a> and <a href="http://store.steampowered.com/app/50/">Opposing Force</a> by way of <a href="http://www.svencoop.com/">Sven Co-op</a>. If you're unsure on how to get Sven Co-op configured, please check out the HOWTO posted over at the Cafe's Steamgroup <a href="http://steamcommunity.com/groups/cafeofbrokendreams/discussions/0/540738051842746196/">discussions</a>.</p>
+                    </span><!-- eventdetails -->
+                    <span class="eventinfo">what was your first Cafe memory?</span>
+                </div><!-- eventholder -->
+            </div><!-- events -->
             <div id="tools">
                 {% if not g.user %}
                 <a href="{{ url_for('login') }}" class="login">Login with Steam</a>
@@ -61,5 +74,8 @@
                 {% if adminflag %}<span style="display: block;">Admin!</span>{% endif %}
             </div><!-- tools -->
         </div> <!-- bottom -->
+        <div id="footer">
+            <span class="foottxt">Cafe of Broken Dreams est. 2009 | <a href="http://steampowered.com">Powered by Steam</a> | <a href="https://github.com/GordonsBeard/cafe-flask">Github Repo</a></span>
+        </div><!-- footer>
     </body>
 </html>

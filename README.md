@@ -13,4 +13,4 @@ Things Used
 * [Flask-OpenID](https://github.com/mitsuhiko/flask-openid)
 * [Flask-SQLAlchemy](https://github.com/mitsuhiko/flask-sqlalchemy)
 * [SourceLib](https://github.com/frostschutz/SourceLib)
-* "Open Sans", "Andale Mono" from [Google Fonts](https://www.google.com/fonts)
+* "Open Sans", "Oswald", and "Andale Mono" from [Google Fonts](https://www.google.com/fonts)

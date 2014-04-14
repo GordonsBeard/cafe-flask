@@ -62,10 +62,10 @@ def req_server_info():
                     status_dict[server] = {'error': True}
             try:
                 status_dict[server]['gamename'] = servers[server]['name']
+                status_dict[server]['ip'] = ip
+                status_dict[server]['port'] = port
             except KeyError:
                 pass
-            status_dict[server]['ip'] = ip
-            status_dict[server]['port'] = port
 
     # Write stuff to pickle file
     statusfile = open(serverstatus_filename, 'w')
