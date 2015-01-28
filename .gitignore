@@ -81,6 +81,7 @@ nosetests.xml
 *.db
 
 # Cafe Site files
+community_data.cache
 server_statuses
 settings.cfg
 betasite.wsgi
