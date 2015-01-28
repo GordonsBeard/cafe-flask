@@ -48,20 +48,40 @@
         </div><!-- middle -->
         <div id="bottom">
             <p class="midtext">>The bounty hunters, who are gathering in channel "#CAFE", will play freely without fear of risky things. They must create new dreams and films by breaking traditional styles. The work, which becomes a new genre itself, will be called... the CAFE OF BROKEN DREAMS </p>
-            <span class="bottomminiheader">events</span>
-            <div id="events">
-                <div class="eventholder">
-                    <span class="eventimage"><img src="/static/img/cake.png" alt="cake" /></span>
-                    <span class="eventtitle">Cafe's 5th Birthday</span>
-                    <span class="eventdate">April 18th</span>
-                    <span class="eventdetails">
-                        <p>We'll be hosting our 5th birthday celebration! What does this mean for you, the loyal viewer slash subscriber slash person who randomly stubmled across this website with no prior knowledge of what we are or who we do?</p>
-                        <p>Unlike huge galas in the years past, in this - the 2nd age of Cafe - we have decided to keep it more low key.</p> 
-                        <p>This year we will be running through <a href="http://store.steampowered.com/app/70/">Half-Life 1</a> and <a href="http://store.steampowered.com/app/50/">Opposing Force</a> by way of <a href="http://www.svencoop.com/">Sven Co-op</a>. If you're unsure on how to get Sven Co-op configured, please check out the HOWTO posted over at the Cafe's Steamgroup <a href="http://steamcommunity.com/groups/cafeofbrokendreams/discussions/0/540738051842746196/">discussions</a>.</p>
-                    </span><!-- eventdetails -->
-                    <span class="eventinfo">what was your first Cafe memory?</span>
-                </div><!-- eventholder -->
-            </div><!-- events -->
+            <div class="feedcolumn">
+                <span class="bottomminiheader">events</span>
+                <div id="events">
+                    {% for event in eventlist %}
+                    <div class="eventholder">
+                        <!--<span class="eventimage"><img src="/static/img/cake.png" alt="cake" /></span>-->
+                        <span class="eventtitle"><a href="{{ event.link }}">{{ event.title }}</a></span>
+                        <span class="eventdate">{{ event.date }}</span>
+                        <span class="eventdetails">
+                            {{ event.content|safe }}
+                        </span><!-- eventdetails -->
+                        <span class="eventinfo">{{ event.subline|safe }} | <a href="{{ event.link }}">Permalink</a></span>
+                    </div><!-- eventholder -->
+                    {% endfor %}
+                </div><!-- events -->
+                <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams/events">See All...</a></span>
+            </div><!-- feedcolumn -->
+            <div class="feedcolumn">
+                <span class="bottomminiheader">announcements</span>
+                <div id="announcements">
+                    {% for news in newslist %}
+                    <div class="eventholder">
+                        <!--<span class="eventimage"><img src="/static/img/cake.png" alt="cake" /></span>-->
+                        <span class="eventtitle"><a href="{{ news.link }}">{{ news.title }}</a></span>
+                        <span class="eventdate">{{ news.date }}</span>
+                        <span class="eventdetails">
+                            {{ news.content|safe }}<br />
+                        </span><!-- eventdetails -->
+                        <span class="eventinfo"><a href="{{ news.link }}">Permalink</a></span>
+                    </div><!-- eventholder -->
+                    {% endfor %}
+                </div><!-- announcements -->
+                <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams/announcements">See All...</a></span>
+            </div><!-- feedcolumn -->
             <div id="tools">
                 {% if not g.user %}
                 <a href="{{ url_for('login') }}" class="login">Login with Steam</a>
