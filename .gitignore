@@ -82,7 +82,7 @@ nosetests.xml
 
 # Cafe Site files
 community_data.cache
-server_statuses
+server_status.cache
 settings.cfg
 betasite.wsgi
 SourceLib/

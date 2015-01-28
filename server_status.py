@@ -6,7 +6,7 @@ from SourceLib.SourceQuery import SourceQuery as SQ
 import errno, os, pickle, datetime
 from socket import error as socket_error
 
-serverstatus_filename = 'server_statuses'
+serverstatus_filename = 'server_status.cache'
 servercfg_filename = 'servers.cfg'
 seconds_kept_fresh = 120
 
@@ -44,7 +44,7 @@ def req_server_info():
 
     # Open the server.cfg file up.
     if not os.path.exists(servercfg_filename):
-        print "No CFG! Create one you dumbass!"
+        print "No CFG!"
         return False
 
 

@@ -1,3 +1,0 @@
-STEAM_API_KEY = 'Get your own at steam!'
-SECRET_KEY = 'Make it secret!'
-SQLALCHEMY_DATABASE_URI = 'sqlite:///cafesite.db'

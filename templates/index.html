@@ -47,7 +47,7 @@
             </div><!-- wrapper -->
         </div><!-- middle -->
         <div id="bottom">
-            <p class="midtext">>The bounty hunters, who are gathering in channel "#CAFE", will play freely without fear of risky things. They must create new dreams and films by breaking traditional styles. The work, which becomes a new genre itself, will be called... the CAFE OF BROKEN DREAMS </p>
+            <p class="midtext">The bounty hunters, who are gathering in channel "#CAFE", will play freely without fear of risky things. They must create new dreams and films by breaking traditional styles. The work, which becomes a new genre itself, will be called... the CAFE OF BROKEN DREAMS </p>
             <div class="feedcolumn">
                 <span class="bottomminiheader">events</span>
                 <div id="events">
@@ -82,20 +82,9 @@
                 </div><!-- announcements -->
                 <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams/announcements">See All...</a></span>
             </div><!-- feedcolumn -->
-            <div id="tools">
-                {% if not g.user %}
-                <a href="{{ url_for('login') }}" class="login">Login with Steam</a>
-                    {% else %}
-                <a href="{{ url_for('logout') }}" class="logout">Logout with style</a>
-                {% endif %}
-                {% for message in get_flashed_messages() %}
-                <span class="flash">{{ message }}</div>
-                {% endfor %}
-                {% if adminflag %}<span style="display: block;">Admin!</span>{% endif %}
-            </div><!-- tools -->
         </div> <!-- bottom -->
         <div id="footer">
             <span class="foottxt">Cafe of Broken Dreams est. 2009 | <a href="http://steampowered.com">Powered by Steam</a> | <a href="https://github.com/GordonsBeard/cafe-flask">Github Repo</a></span>
-        </div><!-- footer>
+        </div><!-- footer -->
     </body>
 </html>
