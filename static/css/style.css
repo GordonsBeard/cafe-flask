@@ -68,7 +68,7 @@ a.logout {
     font-family: monospace;
 }
 
-#tools, #events {
+#tools, #events, #announcements {
     background-color: #333333;
     border: 1px solid #3C3C3C;
     margin-left: auto;
@@ -79,11 +79,18 @@ a.logout {
     display: none;
 }
 
-#events {
+#events, #announcements {
     text-align: left;
 }
 
-#eventholder {
+.feedcolumn {
+    display: inline-block;
+    vertical-align: top;
+    margin: auto;
+    width: 48%;
+}
+
+.eventholder {
     padding: 12px;
 }
 
@@ -98,6 +105,7 @@ a.logout {
     color: white;
     font-size: 14px;
     text-align: center;
+    margin-bottom: 12px;
 }
 
 .eventdetails p { line-height: 140%; margin: .5em; }

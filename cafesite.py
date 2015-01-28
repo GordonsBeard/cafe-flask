@@ -1,5 +1,6 @@
 """ Cafe of Broken Dreams: the final years """
 from server_status import get_server_status
+from community import get_group_info
 
 from flask import Flask, render_template, redirect, session, json, g, flash
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -73,7 +74,10 @@ def logout():
 
 @app.route('/')
 def index():
-    serverdict = get_server_status()
+    serverdict  = get_server_status()
+    groupinfo   = get_group_info( "cafeofbrokendreams" )
+    eventdict   = groupinfo["events"]
+    newsdict    = groupinfo["announcements"]
 
     # Admin check
     admins = app.config['ADMINS']
@@ -83,7 +87,7 @@ def index():
     except AttributeError:
         adminflag = False
 
-    return render_template('index.html', serverinfo = serverdict, adminflag = adminflag)
+    return render_template('index.html', serverinfo = serverdict, eventlist = eventdict, newslist = newsdict, adminflag = adminflag)
 
 if __name__ == "__main__":
     app.run(debug = True, host='0.0.0.0')
