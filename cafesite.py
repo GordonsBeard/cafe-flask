@@ -14,7 +14,7 @@ def index():
     eventdict   = groupinfo["events"]
     newsdict    = groupinfo["announcements"]
 
-    return render_template('index.html', serverinfo = serverdict, eventlist = eventdict, newslist = newsdict)
+    return render_template('index.html', serverinfo = serverdict, eventlist = eventdict[:1], newslist = newsdict[:1])
 
 if __name__ == "__main__":
     app.run(debug = True, host='0.0.0.0')

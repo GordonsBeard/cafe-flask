@@ -10,7 +10,7 @@ import re                     # regex for regex
 import urllib2                # url access interface
 
 COMMUNITY_CACHE_FILE  = "community_data.cache"  # filename to cache the community data to
-CACHE_EXPIRE_TIME     = 900                     # time between cache creation and expiration (15 minutes)
+CACHE_EXPIRE_TIME     = 3600                     # time between cache creation and expiration (15 minutes)
 EXPANDED_MONTHS       = { "Jan" : "January",    # expanded form of 3 letter months
                           "Feb" : "February",
                           "Mar" : "March",
@@ -72,7 +72,7 @@ def _format_eventinfo_to_subline( tag ) :
 # Remove the steam community link filter from any links
 def _remove_community_linkfilter( s ) :
   return s.replace( "https://steamcommunity.com/linkfilter/?url=", "" )
- 
+
 class SteamGroup :
   # make a group content request to steam, getting only the necessary xml back
   def _requestGroupContent( self, fn, module, id=None ) :
