@@ -26,9 +26,10 @@ em { font-style: italic; }
 
 #bio {
     background-repeat: no-repeat;
-    background-position: top center;
+    background-position: middle left;
     background-image: url('../img/black_tmug_100.png');
-    padding-top: 100px;
+    margin: 0px 48px;
+    padding: 20px 0px 0px 120px;
     display: block;
     text-align: left;
 }
@@ -79,11 +80,7 @@ a.logout {
 }
 
 #tools, #events, #announcements {
-    background-color: #333333;
-    border: 1px solid #3C3C3C;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 12px;
+    margin: 0 auto;
 }
 
 #tools {
@@ -102,7 +99,10 @@ a.logout {
 }
 
 .eventholder {
+    background-color: #333333;
+    border: 1px solid #3C3C3C;
     padding: 12px;
+    margin-bottom: 12px;
 }
 
 .eventimage, .eventtitle, .eventdate, .eventdetails, .eventinfo { display: block; }
@@ -111,15 +111,19 @@ a.logout {
     font-size: 16px;
     text-decoration: underline;
     text-align: center;
+    background-color: #3c3c3c;
+    padding: 5px;
 }
 .eventdate {
     color: white;
     font-size: 14px;
     text-align: center;
+    margin-top: 5px;
     margin-bottom: 12px;
 }
 
 .eventdetails p { line-height: 140%; margin: .5em; }
+.eventdetails ul { line-height: 150%; margin: .5em; list-style: circle inside; }
 
 .eventimage {
     float: left;
@@ -184,6 +188,10 @@ div .server {
     text-align: right;
     margin-top: 20px;
     margin-bottom: 10px;
+}
+
+.miniheader {
+    margin-right: 45px;
 }
 
 .bottomminiheader {
