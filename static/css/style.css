@@ -241,6 +241,7 @@ span .status {
 
 /* Smallbox info styling */
 .smallbox {
+    background-position: 0px 5px;
     border-radius: 10px;
     display: inline-block;
     width: 225px;

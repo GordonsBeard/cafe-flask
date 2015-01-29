@@ -15,33 +15,37 @@
                 </div><!-- bio -->
                     {% if serverinfo != False %}
                 <span class="miniheader">servers</span>
+                <div id="servers">
                         {% for server in serverinfo.keys() %}
-                <div id="{{ server }}" class="server">
-                    <span class="info">
-                        <span class="game">{{ serverinfo[server]['gamename'] }}</span>
-                        <span class="ip">
-                            <a href="steam://connect/{{ serverinfo[server]['ip'] }}:{{ serverinfo[server]['port'] }}">{{ serverinfo[server]['ip'] }}:{{ serverinfo[server]['port'] }}</a>
-                        </span>
-                        <span class="status">{% if not serverinfo[server]['error'] %}{{ serverinfo[server]['numplayers'] }}/{{ serverinfo[server]['maxplayers'] }} [<em>{{ serverinfo[server]['map'] }}</em>]{% else %}server is down!{% endif %}</span>
-                    </span><!-- info -->
-                </div><!-- server -->
+                    <div id="{{ server }}" class="server">
+                        <span class="info">
+                            <span class="game">{{ serverinfo[server]['gamename'] }}</span>
+                            <span class="ip">
+                                <a href="steam://connect/{{ serverinfo[server]['ip'] }}:{{ serverinfo[server]['port'] }}">{{ serverinfo[server]['ip'] }}:{{ serverinfo[server]['port'] }}</a>
+                            </span>
+                            <span class="status">{% if not serverinfo[server]['error'] %}{{ serverinfo[server]['numplayers'] }}/{{ serverinfo[server]['maxplayers'] }} [<em>{{ serverinfo[server]['map'] }}</em>]{% else %}server is down!{% endif %}</span>
+                        </span><!-- info -->
+                    </div><!-- server -->
                         {% endfor %}
+                </div><!-- servers -->
                     {% endif %}
                 <span class="miniheader">community</span>
-                <div id="irc" class="smallbox">
-                    <span class="name">IRC</span>
-                    <span class="link">irc.gamesurge.net (<a href="https://gamesurge.net/chat/cafe">web chat</a>)</span>
-                    <span class="sublink">#cafe - <a href="http://cafeofbrokendreams.com/etc/irc/cafe.html">stats</a></span>
-                </div><!-- irc -->
-                <div id="mumble" class="smallbox">
-                    <span class="name">Mumble</span>
-                    <span class="link">mumble.cafeofbrokendreams.com</span>
-                    <span class="sublink">port 9010</span>
-                </div><!-- mumble -->
-                <div id="cafegroup" class="smallbox">
-                    <span class="name">Cafe SteamGroup</span>
-                    <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams">@ Steam Community</a></span>
-                </div><!-- cafegroup -->
+                <div id="community">
+                    <div id="irc" class="smallbox">
+                        <span class="name">IRC</span>
+                        <span class="link">irc.gamesurge.net (<a href="https://gamesurge.net/chat/cafe">web chat</a>)</span>
+                        <span class="sublink">#cafe - <a href="http://cafeofbrokendreams.com/etc/irc/cafe.html">stats</a></span>
+                    </div><!-- irc -->
+                    <div id="mumble" class="smallbox">
+                        <span class="name">Mumble</span>
+                        <span class="link"><a href="mumble://cafeofbrokendreams.com:9010/?version=1.2.0&title=Cafe%20of%20Broken%20Dreams&url=http://cafeofbrokendreams.com">mumble.cafeofbrokendreams.com</a></span>
+                        <span class="sublink">port 9010</span>
+                    </div><!-- mumble -->
+                    <div id="cafegroup" class="smallbox">
+                        <span class="name">Cafe SteamGroup</span>
+                        <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams">@ Steam Community</a></span>
+                    </div><!-- cafegroup -->
+                </div><!-- community -->
             </div><!-- wrapper -->
         </div><!-- middle -->
         <div id="bottom">
