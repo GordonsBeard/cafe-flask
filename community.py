@@ -145,7 +145,7 @@ class SteamGroup :
     data = {
       "title"     : str( bsdata.h2.string ),
       "date"      : str( bsdata.find( "div", class_="announcement_byline" ).get_text() ),
-      "desc"      : str( bsdata.find( "div", class_="bodytext" ) ).replace( '</br>', '' ),
+      "desc"      : str( "".join( map( unicode, bsdata.find( "div", class_="bodytext" ).contents ) ) ).replace( '</br>', '' ),
     }
     return data
 
