@@ -36,6 +36,17 @@ def modification_time( filename ) :
   t = os.path.getmtime( filename )
   return datetime.datetime.fromtimestamp( t )
 
+# gets a string representing when the cache was last updated
+def get_cache_update_time( ) :
+  if not os.path.exists( COMMUNITY_CACHE_FILE ) :
+    return "Never"
+  rightnow  = datetime.datetime.now()
+  infomtime = modification_time( COMMUNITY_CACHE_FILE )
+  difftime  = rightnow - infomtime
+  if difftime.seconds < 60 or difftime.seconds > CACHE_EXPIRE_TIME :
+    return "Just now"
+  return "{} minutes ago".format( difftime.seconds // 60 )
+
 # gets the group info dict from the cache or requests a new dict
 def get_group_info( group, maxevents=0, maxnews=0 ) :
   # check that the cache exists and create it if it doesn't
@@ -61,6 +72,9 @@ def get_group_info( group, maxevents=0, maxnews=0 ) :
         return data
       except IOError :
         # a read error occurred, just query the info again
+        return request_group_info( group, maxevents, maxnews )
+      except KeyError :
+        # the cache is in a different format than we were expecting
         return request_group_info( group, maxevents, maxnews )
 
 # requests a new copy of the group events and announcements from steam
@@ -134,7 +148,7 @@ class SteamGroup :
     data = {
       "title"     : str( bsdata.h2.string ),
       "date"      : str( bsdata.find( "div", class_="announcement_byline" ).get_text() ),
-      "desc"      : str( bsdata.find( "div", class_="bodytext" ) ).replace( '</br>', '' ),
+      "desc"      : str( "".join( map( unicode, bsdata.find( "div", class_="bodytext" ).contents ) ) ).replace( '</br>', '' ),
     }
     return data
 
