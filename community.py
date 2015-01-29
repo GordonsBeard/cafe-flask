@@ -29,6 +29,17 @@ def modification_time( filename ) :
   t = os.path.getmtime( filename )
   return datetime.datetime.fromtimestamp( t )
 
+# gets a string representing when the cache was last updated
+def get_cache_update_time( ) :
+  if not os.path.exists( COMMUNITY_CACHE_FILE ) :
+    return "Never"
+  rightnow  = datetime.datetime.now()
+  infomtime = modification_time( COMMUNITY_CACHE_FILE )
+  difftime  = rightnow - infomtime
+  if difftime.seconds < 60 or difftime.seconds > CACHE_EXPIRE_TIME :
+    return "Just now"
+  return "{} minutes ago".format( difftime.seconds // 60 )
+
 # gets the group info dict from the cache or requests a new dict
 def get_group_info( group ) :
   if not os.path.exists( COMMUNITY_CACHE_FILE ) :

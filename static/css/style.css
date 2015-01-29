@@ -66,6 +66,18 @@ a.logout {
     font-family: monospace;
 }
 
+#newswrapper {
+    position: relative;
+}
+
+#newswrapper p.updatetime {
+    position: absolute;
+    left: 84px;
+    color: white;
+    font-size: 10px;
+    font-family: monospace;
+}
+
 #tools, #events, #announcements {
     background-color: #333333;
     border: 1px solid #3C3C3C;

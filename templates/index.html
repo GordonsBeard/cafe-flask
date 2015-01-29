@@ -46,40 +46,43 @@
         </div><!-- middle -->
         <div id="bottom">
             <p class="midtext">The bounty hunters, who are gathering in channel "#CAFE", will play freely without fear of risky things. They must create new dreams and films by breaking traditional styles. The work, which becomes a new genre itself, will be called... the CAFE OF BROKEN DREAMS </p>
-            <div class="feedcolumn">
-                <span class="bottomminiheader">events</span>
-                <div id="events">
-                    {% for event in eventlist %}
-                    <div class="eventholder">
-                        <!--<span class="eventimage"><img src="/static/img/cake.png" alt="cake" /></span>-->
-                        <span class="eventtitle"><a href="{{ event.link }}">{{ event.title }}</a></span>
-                        <span class="eventdate">{{ event.date }}</span>
-                        <span class="eventdetails">
-                            {{ event.content|safe }}
-                        </span><!-- eventdetails -->
-                        <span class="eventinfo">{{ event.subline|safe }} | <a href="{{ event.link }}">Permalink</a></span>
-                    </div><!-- eventholder -->
-                    {% endfor %}
-                </div><!-- events -->
-                <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams/events">See All...</a></span>
-            </div><!-- feedcolumn -->
-            <div class="feedcolumn">
-                <span class="bottomminiheader">announcements</span>
-                <div id="announcements">
-                    {% for news in newslist %}
-                    <div class="eventholder">
-                        <!--<span class="eventimage"><img src="/static/img/cake.png" alt="cake" /></span>-->
-                        <span class="eventtitle"><a href="{{ news.link }}">{{ news.title }}</a></span>
-                        <span class="eventdate">{{ news.date }}</span>
-                        <span class="eventdetails">
-                            {{ news.content|safe }}<br />
-                        </span><!-- eventdetails -->
-                        <span class="eventinfo"><a href="{{ news.link }}">Permalink</a></span>
-                    </div><!-- eventholder -->
-                    {% endfor %}
-                </div><!-- announcements -->
-                <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams/announcements">See All...</a></span>
-            </div><!-- feedcolumn -->
+            <div id="newswrapper">
+                <div class="feedcolumn">
+                    <span class="bottomminiheader">events</span>
+                    <div id="events">
+                        {% for event in eventlist %}
+                        <div class="eventholder">
+                            <!--<span class="eventimage"><img src="/static/img/cake.png" alt="cake" /></span>-->
+                            <span class="eventtitle"><a href="{{ event.link }}">{{ event.title }}</a></span>
+                            <span class="eventdate">{{ event.date }}</span>
+                            <span class="eventdetails">
+                                {{ event.content|safe }}
+                            </span><!-- eventdetails -->
+                            <span class="eventinfo">{{ event.subline|safe }} | <a href="{{ event.link }}">Permalink</a></span>
+                        </div><!-- eventholder -->
+                        {% endfor %}
+                    </div><!-- events -->
+                    <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams/events">See All...</a></span>
+                </div><!-- feedcolumn -->
+                <div class="feedcolumn">
+                    <span class="bottomminiheader">announcements</span>
+                    <div id="announcements">
+                        {% for news in newslist %}
+                        <div class="eventholder">
+                            <!--<span class="eventimage"><img src="/static/img/cake.png" alt="cake" /></span>-->
+                            <span class="eventtitle"><a href="{{ news.link }}">{{ news.title }}</a></span>
+                            <span class="eventdate">{{ news.date }}</span>
+                            <span class="eventdetails">
+                                {{ news.content|safe }}<br />
+                            </span><!-- eventdetails -->
+                            <span class="eventinfo"><a href="{{ news.link }}">Permalink</a></span>
+                        </div><!-- eventholder -->
+                        {% endfor %}
+                    </div><!-- announcements -->
+                    <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams/announcements">See All...</a></span>
+                </div><!-- feedcolumn -->
+                <p class="updatetime">Last Updated: {{ updatetime }}</p>
+            </div><!-- newswrapper -->
         </div> <!-- bottom -->
         <div id="footer">
             <span class="foottxt">Cafe of Broken Dreams est. 2009 | <a href="http://steampowered.com">Powered by Steam</a> | <a href="https://github.com/GordonsBeard/cafe-flask">Github Repo</a></span>
