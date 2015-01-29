@@ -258,25 +258,26 @@ span .status {
     font-weight: bold;
     padding: 5px;
     display: block;
-    background-color: #64B6B1;
+    background-color: #373331;
 }
 
 .smallbox .link {
     display: block;
     font-size: 12px;
     padding: 2px;
-    background-color: grey;
+    background-color: #494449;
 }
 
 .smallbox .sublink {
     display: block;
     font-size: 12px;
-    background-color: grey;
+    background-color: #494449;
 }
 /* Smallbox */
 #irc { background-image: url('../img/irc.png'); }
-#irc > span.name { background-color:#373331; color: yellow; }
-#irc .link, #irc .sublink { color: #FFDD00; background-color:#494449; }
+#irc > span.name { color: yellow; }
+#irc .link, #irc .sublink { color: #FFDD00; }
 #mumble { background-image: url('../img/mumble.png'); }
+#mumble > span.name, #mumble .link, #mumble .sublink { color:#ABCDEF; }
 #cafegroup { background-image: url('../img/cafe_steamgroup.jpg'); }
-
+#cafegroup > span.name { color:#BFBFBF; }
