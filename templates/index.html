@@ -38,7 +38,7 @@
                     </div><!-- irc -->
                     <div id="mumble" class="smallbox">
                         <span class="name">Mumble</span>
-                        <span class="link"><a href="mumble://cafeofbrokendreams.com:9010/?version=1.2.0&title=Cafe%20of%20Broken%20Dreams&url=http://cafeofbrokendreams.com">mumble.cafeofbrokendreams.com</a></span>
+                        <span class="link"><a href="mumble://cafeofbrokendreams.com:9010/?version=1.2.0&title=The%20Speakeasy&url=http://cafeofbrokendreams.com">mumble.cafeofbrokendreams.com</a></span>
                         <span class="sublink">port 9010</span>
                     </div><!-- mumble -->
                     <div id="cafegroup" class="smallbox">
@@ -52,6 +52,7 @@
             <p class="midtext">The bounty hunters, who are gathering in channel "#CAFE", will play freely without fear of risky things. They must create new dreams and films by breaking traditional styles. The work, which becomes a new genre itself, will be called... the <strong>CAFE OF BROKEN DREAMS</strong> </p>
             <div id="newswrapper">
                 <div class="feedcolumn">
+                    <p class="updatetime">Last Updated: {{ updatetime }}</p>
                     <span class="bottomminiheader">events</span>
                     <div id="events">
                         {% for event in eventlist %}
@@ -85,7 +86,6 @@
                     </div><!-- announcements -->
                     <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams/announcements">See All...</a></span>
                 </div><!-- feedcolumn -->
-                <p class="updatetime">Last Updated: {{ updatetime }}</p>
             </div><!-- newswrapper -->
         </div> <!-- bottom -->
         <div id="footer">

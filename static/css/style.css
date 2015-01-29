@@ -73,7 +73,8 @@ a.logout {
 
 #newswrapper p.updatetime {
     position: absolute;
-    left: 84px;
+    top: 48px;
+    float: left;
     color: white;
     font-size: 10px;
     font-family: monospace;
