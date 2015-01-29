@@ -10,7 +10,8 @@ import re                     # regex for regex
 import urllib2                # url access interface
 
 COMMUNITY_CACHE_FILE  = "community_data.cache"  # filename to cache the community data to
-CACHE_EXPIRE_TIME     = 3600                     # time between cache creation and expiration (15 minutes)
+CACHE_EXPIRE_TIME     = 3600                    # time between cache creation and expiration (15 minutes)
+CONTENT_ONLY_TAG      = "?content_only=true"    # query to only receive XML content from a steam URL
 EXPANDED_MONTHS       = { "Jan" : "January",    # expanded form of 3 letter months
                           "Feb" : "February",
                           "Mar" : "March",
@@ -23,6 +24,12 @@ EXPANDED_MONTHS       = { "Jan" : "January",    # expanded form of 3 letter mont
                           "Oct" : "October",
                           "Nov" : "November",
                           "Dec" : "December" }
+MODULE_EVENTS         = "events"                # url of the events list module
+MODULE_EVENTS_DETAIL  = "events"                # url of the event details module
+MODULE_NEWS           = "announcements"         # url of the announcement list module
+MODULE_NEWS_DETAIL    = "announcements/detail"  # url of the annoucnement details module
+URL_GROUP_BASE        = "https://steamcommunity.com/groups/" # base url of steam groups
+URL_LINK_FILTER       = "https://steamcommunity.com/linkfilter/?url=" # steam community link filter
 
 # gets the modification time of a file as datetime
 def modification_time( filename ) :
@@ -86,15 +93,15 @@ def _format_eventinfo_to_subline( tag ) :
 
 # Remove the steam community link filter from any links
 def _remove_community_linkfilter( s ) :
-  return s.replace( "https://steamcommunity.com/linkfilter/?url=", "" )
+  return s.replace( URL_LINK_FILTER, "" )
 
 class SteamGroup :
   # make a group content request to steam, getting only the necessary xml back
   def _requestGroupContent( self, fn, module, id=None ) :
     if id :
-      url = self.groupUrl + '/' + module + '/' + str( id ) + "?content_only=true"
+      url = self.groupUrl + '/' + module + '/' + str( id ) + CONTENT_ONLY_TAG
     else :
-      url = self.groupUrl + '/' + module + "?content_only=true"
+      url = self.groupUrl + '/' + module + CONTENT_ONLY_TAG
 
     # construct and send a request
     req = urllib2.Request( url )
@@ -140,13 +147,13 @@ class SteamGroup :
 
   # gets the details of a particular event by event id
   def getEventDetails( self, id ) :
-    data = self._requestGroupContent( self._parseEventDetails, "events", id )
-    return Event( data['title'], data['date'], data['headline'], data['desc'], self.groupUrl + '/events/' + id )
+    data = self._requestGroupContent( self._parseEventDetails, MODULE_EVENTS_DETAIL, id )
+    return Event( data['title'], data['date'], data['headline'], data['desc'], self.groupUrl + '/' + MODULE_EVENTS_DETAIL + '/' + id )
 
   # gets a list of all event ids this month
   def getEventList( self, maxresults=0 ) :
     data = []
-    for eid in self._requestGroupContent( self._parseEventList, "events" ) :
+    for eid in self._requestGroupContent( self._parseEventList, MODULE_EVENTS ) :
       data.append( self.getEventDetails( eid ) )
 
       # limit our query to the maximum number of results
@@ -157,13 +164,13 @@ class SteamGroup :
 
   # gets the details of a particular announcement by id
   def getAnnouncementDetails( self, id ) :
-    data = self._requestGroupContent( self._parseAnnouncementDetails, "announcements/detail", id )
-    return Announcement( data['title'], data['date'], data['desc'], self.groupUrl + "/announcements/detail/" + id )
+    data = self._requestGroupContent( self._parseAnnouncementDetails, MODULE_NEWS_DETAIL, id )
+    return Announcement( data['title'], data['date'], data['desc'], self.groupUrl + '/' + MODULE_NEWS_DETAIL + '/' + id )
 
   # gets a list of the past 5 announcement ids
   def getAnnouncementList( self, maxresults=0 ) :
     data = []
-    for aid in self._requestGroupContent( self._parseAnnouncementList, "announcements" ) :
+    for aid in self._requestGroupContent( self._parseAnnouncementList, MODULE_NEWS ) :
       data.append( self.getAnnouncementDetails( aid ) )
 
       # limit our query to the maximum number of results
@@ -174,7 +181,7 @@ class SteamGroup :
 
   def __init__( self, id ) :
     self.groupId      = id
-    self.groupUrl     = "http://steamcommunity.com/groups/" + id
+    self.groupUrl     = URL_GROUP_BASE + id
 
 class Announcement :
   def __init__( self, title, date, desc, link ) :
