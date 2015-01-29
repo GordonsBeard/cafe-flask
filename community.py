@@ -30,29 +30,29 @@ def modification_time( filename ) :
   return datetime.datetime.fromtimestamp( t )
 
 # gets the group info dict from the cache or requests a new dict
-def get_group_info( group ) :
+def get_group_info( group, maxevents=0, maxnews=0 ) :
   if not os.path.exists( COMMUNITY_CACHE_FILE ) :
-    request_group_info( group )
+    request_group_info( group, maxevents, maxnews )
 
   rightnow  = datetime.datetime.now()
   infomtime = modification_time( COMMUNITY_CACHE_FILE )
   difftime  = datetime.timedelta( 0, CACHE_EXPIRE_TIME, 0 )
 
   if (rightnow - infomtime) > difftime :
-    return request_group_info( group )
+    return request_group_info( group, maxevents, maxnews )
   else :
     with open( COMMUNITY_CACHE_FILE, 'rb' ) as f :
       try :
         return pickle.load( f )
       except IOError :
-        return request_group_info( group )
+        return request_group_info( group, maxevents, maxnews )
 
 # requests a new copy of the group events and announcements from steam
-def request_group_info( group ) :
+def request_group_info( group, maxevents=0, maxnews=0 ) :
   with open( COMMUNITY_CACHE_FILE, 'wb' ) as f :
     data = {
-      "events" : SteamGroup( group ).getEventList(),
-      "announcements" : SteamGroup( group ).getAnnouncementList(),
+      "events" : SteamGroup( group ).getEventList( maxevents ),
+      "announcements" : SteamGroup( group ).getAnnouncementList( maxnews ),
     }
     pickle.dump( data, f )
     return data
@@ -129,10 +129,15 @@ class SteamGroup :
     return Event( data['title'], data['date'], data['headline'], data['desc'], self.groupUrl + '/events/' + id )
 
   # gets a list of all event ids this month
-  def getEventList( self ) :
+  def getEventList( self, maxresults=0 ) :
     data = []
     for eid in self._requestGroupContent( self._parseEventList, "events" ) :
       data.append( self.getEventDetails( eid ) )
+
+      # limit our query to the maximum number of results
+      maxresults -= 1
+      if maxresults == 0 :  # note the == is important here
+        break;
     return data
 
   # gets the details of a particular announcement by id
@@ -141,10 +146,15 @@ class SteamGroup :
     return Announcement( data['title'], data['date'], data['desc'], self.groupUrl + "/announcements/detail/" + id )
 
   # gets a list of the past 5 announcement ids
-  def getAnnouncementList( self ) :
+  def getAnnouncementList( self, maxresults=0 ) :
     data = []
     for aid in self._requestGroupContent( self._parseAnnouncementList, "announcements" ) :
       data.append( self.getAnnouncementDetails( aid ) )
+
+      # limit our query to the maximum number of results
+      maxresults -= 1
+      if maxresults == 0 :  # note the == is important here
+        break;
     return data
 
   def __init__( self, id ) :
