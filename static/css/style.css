@@ -185,6 +185,10 @@ div .server {
 #csgo { background-image: url('../img/de_seaside.jpg'); background-position: 0px 0px; }
 
 /* Server info styling */
+.server a {
+    color: white;
+}
+
 .server span {
     display: block;
     color: white;
