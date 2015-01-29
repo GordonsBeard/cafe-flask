@@ -5,8 +5,6 @@ html, body {
     background-image: url('../img/congruent_outline.png');
 }
 
-a { color: #383838; font-weight: bold; }
-
 h1 { font-size: 28px; font-weight: bold; }
 h2 { font-size: 24px; font-weight: bold; }
 h3 { font-size: 20px; font-weight: bold; }
@@ -217,12 +215,6 @@ span .status {
     text-align: left;
 }
 
-/* Smallbox */
-#irc { background-image: url('../img/irc.png'); }
-#mumble { background-image: url('../img/mumble.png'); }
-#cafegroup { background-image: url('../img/cafe_steamgroup.jpg'); }
-#fightclub { background-image: url('../img/fightclub_group.jpg'); }
-
 /* Smallbox info styling */
 .smallbox {
     border-radius: 10px;
@@ -230,6 +222,10 @@ span .status {
     width: 225px;
     height: 100px;
     overflow: hidden;
+}
+
+.smallbox a {
+    color: #99C2D8;
 }
 
 .smallbox .name {
@@ -243,11 +239,18 @@ span .status {
     display: block;
     font-size: 12px;
     padding: 2px;
-    background-image: url('../img/grey_transparent.png');
+    background-color: grey;
 }
 
 .smallbox .sublink {
     display: block;
     font-size: 12px;
-    background-image: url('../img/grey_transparent.png');
+    background-color: grey;
 }
+/* Smallbox */
+#irc { background-image: url('../img/irc.png'); }
+#irc > span.name { background-color:#373331; color: yellow; }
+#irc .link, #irc .sublink { color: #FFDD00; background-color:#494449; }
+#mumble { background-image: url('../img/mumble.png'); }
+#cafegroup { background-image: url('../img/cafe_steamgroup.jpg'); }
+
