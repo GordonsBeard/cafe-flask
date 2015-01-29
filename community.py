@@ -31,27 +31,39 @@ def modification_time( filename ) :
 
 # gets the group info dict from the cache or requests a new dict
 def get_group_info( group, maxevents=0, maxnews=0 ) :
+  # check that the cache exists and create it if it doesn't
   if not os.path.exists( COMMUNITY_CACHE_FILE ) :
-    request_group_info( group, maxevents, maxnews )
+    return request_group_info( group, maxevents, maxnews )
 
+  # check that the cache is still up to date
   rightnow  = datetime.datetime.now()
   infomtime = modification_time( COMMUNITY_CACHE_FILE )
   difftime  = datetime.timedelta( 0, CACHE_EXPIRE_TIME, 0 )
 
   if (rightnow - infomtime) > difftime :
     return request_group_info( group, maxevents, maxnews )
+
+  # read the group info from the cache
   else :
     with open( COMMUNITY_CACHE_FILE, 'rb' ) as f :
       try :
-        return pickle.load( f )
+        # make sure that we've queried enough information
+        data = pickle.load( f )
+        if data["maxevents"] != maxevents or data["maxnews"] != maxnews :
+          return request_group_info( group, maxevents, maxnews )
+        return data
       except IOError :
+        # a read error occurred, just query the info again
         return request_group_info( group, maxevents, maxnews )
 
 # requests a new copy of the group events and announcements from steam
 def request_group_info( group, maxevents=0, maxnews=0 ) :
   with open( COMMUNITY_CACHE_FILE, 'wb' ) as f :
+    # query our data and then dump it to the cache
     data = {
+      "maxevents" : maxevents,
       "events" : SteamGroup( group ).getEventList( maxevents ),
+      "maxnews" : maxnews,
       "announcements" : SteamGroup( group ).getAnnouncementList( maxnews ),
     }
     pickle.dump( data, f )
@@ -59,8 +71,11 @@ def request_group_info( group, maxevents=0, maxnews=0 ) :
 
 # Format an event's date so it matches with the announcements
 def _format_eventdate_for_yr( date, year ) :
+  # expand any compact form months
   for month in EXPANDED_MONTHS.keys() :
     date = date.replace( month, EXPANDED_MONTHS[month] )
+
+  # reformat the event date and time
   pattern = "([^@]+) @ ([\S\s]+)"
   match   = re.search( pattern, date )
   return "{}, {} at {}".format( match.group( 1 ), year, match.group( 2 ) )
