@@ -87,3 +87,4 @@ settings.cfg
 betasite.wsgi
 SourceLib/
 flask-sqlalchemy/
+venv/
