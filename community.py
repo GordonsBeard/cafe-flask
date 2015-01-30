@@ -24,7 +24,7 @@ EXPANDED_MONTHS       = { "Jan" : "January",    # expanded form of 3 letter mont
                           "Oct" : "October",
                           "Nov" : "November",
                           "Dec" : "December" }
-MODULE_EVENTS         = "events"                # url of the events list module
+MODULE_EVENTS         = ""                      # url of the events list module
 MODULE_EVENTS_DETAIL  = "events"                # url of the event details module
 MODULE_NEWS           = "announcements"         # url of the announcement list module
 MODULE_NEWS_DETAIL    = "announcements/detail"  # url of the annoucnement details module
@@ -100,17 +100,21 @@ class SteamGroup :
     data = {
       "title"     : str( bsdata.h2.string ),
       "date"      : str( _format_eventdate_for_yr( bsdata.find( "div", class_="announcement_byline" ).get_text(), datetime.date.today().year ) ),
-      "headline"  : str( bsdata.find_all( "p" )[0] ),
-      "desc"      : str( bsdata.find_all( "p" )[1] ).replace( '</br>', '' ),
+      "headline"  : str( bsdata.p ),
+      "desc"      : str( bsdata.p.find_next( "p" ) ).replace( '</br>', '' ),
+      "img"       : str( bsdata.img["src"] )
     }
     return data
 
   # reads through an xml response and builds a list of all event ids
   @staticmethod
   def _parseEventList( req ) :
-    pattern = "(\d+)_eventBlock"
+    pattern = re.compile( "#events/(\d+)" )
     bsdata = BeautifulSoup( req.read() )
-    return [re.search( pattern, e['id'] ).group( 1 ) for e in bsdata.find_all( "div", class_="eventBlock" )]
+    try : 
+      return [re.search( pattern, e.a['href'] ).group( 1 ) for e in bsdata.find_all( "div", class_="upcoming_event" )]
+    except (AttributeError, IndexError) :
+      return []
 
   # reads through an xml response and builds a dict of data to construct a new announcement
   @staticmethod
@@ -128,12 +132,15 @@ class SteamGroup :
   def _parseAnnouncementList( req ) :
     pattern = "abody_(\d+)"
     bsdata = BeautifulSoup( req.read() )
-    return [re.search( pattern, e['id'] ).group( 1 ) for e in bsdata.find_all( "div", class_="bodytext" )]
+    try :
+      return [re.search( pattern, e['id'] ).group( 1 ) for e in bsdata.find_all( "div", class_="bodytext" )]
+    except (AttributeError, IndexError) :
+      return []
 
   # gets the details of a particular event by event id
   def getEventDetails( self, id ) :
     data = self._requestGroupContent( self._parseEventDetails, MODULE_EVENTS_DETAIL, id )
-    return Event( data['title'], data['date'], data['headline'], data['desc'], self.groupUrl + '/' + MODULE_EVENTS_DETAIL + '/' + id )
+    return Event( data['title'], data['date'], data['headline'], data['desc'], data['img'], self.groupUrl + '/' + MODULE_EVENTS_DETAIL + '/' + id )
 
   # gets a list of all event ids this month
   def getEventList( self, maxresults=0 ) :
@@ -177,9 +184,10 @@ class Announcement :
     self.link     = link
 
 class Event :
-  def __init__( self, title, date, headline, desc, link ) :
+  def __init__( self, title, date, headline, desc, img, link ) :
     self.title    = title
     self.date     = date
     self.subline  = _format_eventinfo_to_subline( headline )
     self.content  = desc
     self.link     = link
+    self.image    = img
