@@ -18,6 +18,11 @@ em { font-style: italic; }
 
 #middle { width: 100%; background-color: #DED4B9; text-align: center; padding-bottom: 15px;}
 
+#servers {
+    padding: 0px 44px;
+    text-align: right;
+}
+
 #wrapper {
     max-width: 1000px;
     margin-left: auto;
