@@ -70,11 +70,8 @@ def get_group_info( group, maxevents=0, maxnews=0 ) :
         if data["maxevents"] != maxevents or data["maxnews"] != maxnews :
           return request_group_info( group, maxevents, maxnews )
         return data
-      except IOError :
+      except (IOError, KeyError, EOFError) :
         # a read error occurred, just query the info again
-        return request_group_info( group, maxevents, maxnews )
-      except KeyError :
-        # the cache is in a different format than we were expecting
         return request_group_info( group, maxevents, maxnews )
 
 # requests a new copy of the group events and announcements from steam
