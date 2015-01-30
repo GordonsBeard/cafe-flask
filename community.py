@@ -1,7 +1,7 @@
 # community.py
 # Author:       Lancey
 # Description:  Provides wrappers for interfacing with the Steam Community
-# Last Update:  1/28/2015
+# Last Update:  1/30/2015
 from bs4 import BeautifulSoup # BeautifulSoup for XML parsing (probably overkill)
 import datetime               # datetime for getting the current year and finding cache expiration times
 import re                     # regex for regex
@@ -37,11 +37,13 @@ cache                 = caching.Cache( COMMUNITY_CACHE_FILE, CACHE_EXPIRE_TIME, 
 def get_cache_update_time( ) :
   return cache.get_modification_time_string( )
 
+# gets the steam info for a particular group
 def get_group_info( group, maxevents=0, maxnews=0 ) :
   cache.request = lambda: request_group_info( group, maxevents, maxnews )
   cache.valid   = lambda (data): validate_group_info( data, maxevents, maxnews )
   return cache.get( )
 
+# requests and builds a data structure for a group's steam events and announcements
 def request_group_info( group, maxevents=0, maxnews=0 ) :
   return {
       "maxevents" : maxevents,
@@ -50,6 +52,7 @@ def request_group_info( group, maxevents=0, maxnews=0 ) :
       "announcements" : SteamGroup( group ).getAnnouncementList( maxnews ),
   }
 
+# ensures that the cache data is valid
 def validate_group_info( data, maxevents=0, maxnews=0 ) :
   try :
     if data["maxevents"] != maxevents or data["maxnews"] != maxnews :
