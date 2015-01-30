@@ -3,11 +3,11 @@
 # Description:  Provides wrappers for interfacing with the Steam Community
 # Last Update:  1/28/2015
 from bs4 import BeautifulSoup # BeautifulSoup for XML parsing (probably overkill)
-import cPickle as pickle      # pickle for saving data to our cache
 import datetime               # datetime for getting the current year and finding cache expiration times
-import os                     # os interface for checking if the cache already exists
 import re                     # regex for regex
 import urllib2                # url access interface
+
+import caching                # custom caching module
 
 COMMUNITY_CACHE_FILE  = "community_data.cache"  # filename to cache the community data to
 CACHE_EXPIRE_TIME     = 3600                    # time between cache creation and expiration (15 minutes)
@@ -31,61 +31,32 @@ MODULE_NEWS_DETAIL    = "announcements/detail"  # url of the annoucnement detail
 URL_GROUP_BASE        = "https://steamcommunity.com/groups/" # base url of steam groups
 URL_LINK_FILTER       = "https://steamcommunity.com/linkfilter/?url=" # steam community link filter
 
-# gets the modification time of a file as datetime
-def modification_time( filename ) :
-  t = os.path.getmtime( filename )
-  return datetime.datetime.fromtimestamp( t )
+cache                 = caching.Cache( COMMUNITY_CACHE_FILE, CACHE_EXPIRE_TIME, (lambda: None), (lambda: True) )
 
 # gets a string representing when the cache was last updated
 def get_cache_update_time( ) :
-  if not os.path.exists( COMMUNITY_CACHE_FILE ) :
-    return "Never"
-  rightnow  = datetime.datetime.now()
-  infomtime = modification_time( COMMUNITY_CACHE_FILE )
-  difftime  = rightnow - infomtime
-  if difftime.seconds < 60 or difftime.seconds > CACHE_EXPIRE_TIME :
-    return "Just now"
-  return "{} minutes ago".format( difftime.seconds // 60 )
+  return cache.get_modification_time_string( )
 
-# gets the group info dict from the cache or requests a new dict
 def get_group_info( group, maxevents=0, maxnews=0 ) :
-  # check that the cache exists and create it if it doesn't
-  if not os.path.exists( COMMUNITY_CACHE_FILE ) :
-    return request_group_info( group, maxevents, maxnews )
+  cache.request = lambda: request_group_info( group, maxevents, maxnews )
+  cache.valid   = lambda (data): validate_group_info( data, maxevents, maxnews )
+  return cache.get( )
 
-  # check that the cache is still up to date
-  rightnow  = datetime.datetime.now()
-  infomtime = modification_time( COMMUNITY_CACHE_FILE )
-  difftime  = datetime.timedelta( 0, CACHE_EXPIRE_TIME, 0 )
-
-  if (rightnow - infomtime) > difftime :
-    return request_group_info( group, maxevents, maxnews )
-
-  # read the group info from the cache
-  else :
-    with open( COMMUNITY_CACHE_FILE, 'rb' ) as f :
-      try :
-        # make sure that we've queried enough information
-        data = pickle.load( f )
-        if data["maxevents"] != maxevents or data["maxnews"] != maxnews :
-          return request_group_info( group, maxevents, maxnews )
-        return data
-      except (IOError, KeyError, EOFError) :
-        # a read error occurred, just query the info again
-        return request_group_info( group, maxevents, maxnews )
-
-# requests a new copy of the group events and announcements from steam
 def request_group_info( group, maxevents=0, maxnews=0 ) :
-  with open( COMMUNITY_CACHE_FILE, 'wb' ) as f :
-    # query our data and then dump it to the cache
-    data = {
+  return {
       "maxevents" : maxevents,
       "events" : SteamGroup( group ).getEventList( maxevents ),
       "maxnews" : maxnews,
       "announcements" : SteamGroup( group ).getAnnouncementList( maxnews ),
-    }
-    pickle.dump( data, f )
-    return data
+  }
+
+def validate_group_info( data, maxevents=0, maxnews=0 ) :
+  try :
+    if data["maxevents"] != maxevents or data["maxnews"] != maxnews :
+      return False
+    return True
+  except KeyError :
+    return False
 
 # Format an event's date so it matches with the announcements
 def _format_eventdate_for_yr( date, year ) :
