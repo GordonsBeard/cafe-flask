@@ -83,7 +83,7 @@ class Cache :
     # * expires - time in seconds until this cache expires
     # * requestfn - function to call when requesting new data
     # * validatefn - (optional) takes the cache data and returns false if the cache needs to be refreshed
-    def __init__( self, filename, expires, requestfn, validatefn=(lambda: True) ) :
+    def __init__( self, filename, expires, requestfn, validatefn=(lambda (x): True) ) :
       self.filename = filename
       self.lifetime = datetime.timedelta( seconds=expires )
 
