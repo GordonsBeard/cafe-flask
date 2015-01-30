@@ -6,37 +6,16 @@ from SourceLib.SourceQuery import SourceQuery as SQ
 import errno, os, pickle, datetime
 from socket import error as socket_error
 
+import caching
+
 serverstatus_filename = 'server_status.cache'
 servercfg_filename = 'servers.cfg'
 seconds_kept_fresh = 120
 
-def modification_date(filename):
-    t = os.path.getmtime(filename)
-    return datetime.datetime.fromtimestamp(t)
-
 def get_server_status():
     """ Returns status dictionary with server info """
-    # Open the status file.
-    # If it doesn't exist, create it with fresh data.
-    if not os.path.exists(serverstatus_filename):
-        statusfile = open(serverstatus_filename, 'w')
-        status = req_server_info()
-        pickle.dump(status, statusfile)
-        statusfile.close()
-
-    # Check if it needs updating.
-    rightnow = datetime.datetime.now()
-    statusmtime = modification_date(serverstatus_filename)
-    twominutes = datetime.timedelta(0,  seconds_kept_fresh, 0)
-
-    if (rightnow - statusmtime) > twominutes:
-        # If it does, get new data.
-        return req_server_info()
-    else:
-        # Otherwise return the old smell stale data.
-        statusfile = open(serverstatus_filename, 'r')
-        status = pickle.load(statusfile)
-        return status
+    cache = caching.Cache( serverstatus_filename, seconds_kept_fresh, req_server_info )
+    return cache.get( )
 
 def req_server_info():
     """ Always retrieve as much server information as possible. """
@@ -66,10 +45,5 @@ def req_server_info():
                 status_dict[server]['port'] = port
             except KeyError:
                 pass
-
-    # Write stuff to pickle file
-    statusfile = open(serverstatus_filename, 'w')
-    pickle.dump(status_dict, statusfile)
-    statusfile.close()
 
     return status_dict
