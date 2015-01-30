@@ -24,7 +24,7 @@ EXPANDED_MONTHS       = { "Jan" : "January",    # expanded form of 3 letter mont
                           "Oct" : "October",
                           "Nov" : "November",
                           "Dec" : "December" }
-MODULE_EVENTS         = "events"                # url of the events list module
+MODULE_EVENTS         = ""                      # url of the events list module
 MODULE_EVENTS_DETAIL  = "events"                # url of the event details module
 MODULE_NEWS           = "announcements"         # url of the announcement list module
 MODULE_NEWS_DETAIL    = "announcements/detail"  # url of the annoucnement details module
@@ -108,9 +108,9 @@ class SteamGroup :
   # reads through an xml response and builds a list of all event ids
   @staticmethod
   def _parseEventList( req ) :
-    pattern = "(\d+)_eventBlock"
+    pattern = re.compile( "#events/(\d+)" )
     bsdata = BeautifulSoup( req.read() )
-    return [re.search( pattern, e['id'] ).group( 1 ) for e in bsdata.find_all( "div", class_="eventBlock" )]
+    return [re.search( pattern, e.a['href'] ).group( 1 ) for e in bsdata.find_all( "div", class_="upcoming_event" )]
 
   # reads through an xml response and builds a dict of data to construct a new announcement
   @staticmethod
