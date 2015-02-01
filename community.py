@@ -111,7 +111,7 @@ class SteamGroup :
   def _parseEventList( req ) :
     pattern = re.compile( "#events/(\d+)" )
     bsdata = BeautifulSoup( req.read() )
-    try : 
+    try :
       return [re.search( pattern, e.a['href'] ).group( 1 ) for e in bsdata.find_all( "div", class_="upcoming_event" )]
     except (AttributeError, IndexError) :
       return []

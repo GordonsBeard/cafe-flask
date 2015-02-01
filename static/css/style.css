@@ -173,13 +173,6 @@ a.logout {
     font-size: 24px;
 }
 
-div .server {
-    display: inline-block;
-    width: 450px;
-    height: 150px;
-    margin: 2px;
-    border-radius: 10px;
-}
 
 .miniheader, .bottomminiheader {
     display: block;
@@ -199,11 +192,19 @@ div .server {
     color: white;
 }
 
-/* Server styling */
-#tf2 { background-image: url('../img/dustbowl.jpg'); background-position: 0px -25px; }
-#mvm { background-image: url('../img/mvm_decoy.jpg'); background-position: 0px -25px; }
-#sven { background-image: url('../img/svencoop.jpg'); background-position: 0px -55px; }
-#csgo { background-image: url('../img/de_seaside.jpg'); background-position: 0px 0px; }
+/* Server styling */ 
+#tf2 { background-image: url('../img/tf2_default.png');}
+#mvm { }
+#sven { }
+#csgo { }
+
+div .server {
+    display: inline-block;
+    width: 450px;
+    height: 150px;
+    margin: 2px;
+    border-radius: 10px;
+}
 
 /* Server info styling */
 .server a {

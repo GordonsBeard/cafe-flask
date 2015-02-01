@@ -1,9 +1,9 @@
-"""
-    Module used to return the status of all Cafe servers.
-"""
-
-from SourceLib.SourceQuery import SourceQuery as SQ
-import errno, os, pickle, datetime
+# server_status.py
+# Author:       Gordon
+# Description:  Returns the status of all SRCDS servers defined in servers.cfg
+# Last Update:  2/1/2015
+from SourceLib.SourceQuery import SourceQuery as SQ     # SourceLib does all the heavy lifting for us
+import errno, os
 from socket import error as socket_error
 
 import caching
