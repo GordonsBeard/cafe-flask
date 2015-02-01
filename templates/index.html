@@ -55,6 +55,11 @@
                     <p class="updatetime">Last checked: {{ updatetime }}</p>
                     <span class="bottomminiheader">events</span>
                     <div id="events">
+                        {% if eventlist == [] %}
+                        <div class="eventholder">
+                            <p style="text-align: center;">- No events scheduled -</p>
+                        </div>
+                        {% endif %}
                         {% for event in eventlist %}
                         <div class="eventholder">
                             <!--<span class="eventimage"><img src="/static/img/cake.png" alt="cake" /></span>-->
