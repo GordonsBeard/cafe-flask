@@ -35,7 +35,7 @@ class Cache :
 
       difftime = self.get_time_since_modified()
 
-      if difftime.seconds < 60 or difftime > self.lifetime :
+      if difftime.seconds < 60 or difftime.seconds > self.lifetime.seconds :
         return "Just now"
       return "{} minutes ago".format( difftime.seconds // 60 )
 
