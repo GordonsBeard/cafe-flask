@@ -24,7 +24,7 @@ def get_map_images(serverdict):
 @app.route('/')
 def index():
     serverdict  = get_server_status()
-    groupinfo   = get_group_info( "cafeofbrokendreams", maxevents=1, maxnews=1 )
+    groupinfo   = get_group_info( "cafeofbrokendreams", maxevents=3, maxnews=1 )
     eventdict   = groupinfo["events"]
     newsdict    = groupinfo["announcements"]
     updatetime  = get_cache_update_time()
