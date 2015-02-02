@@ -22,19 +22,17 @@ em { font-style: italic; }
     padding-bottom: 15px;
 }
 
-@media all and (min-width: 915px) {
-    #servers, #community {
-        display: inline-block;
-        max-width: 915px;
-        text-align: right;
-        margin: 0 42px;
-    }
+#servers, #community {
+    display: inline-block;
+    max-width: 915px;
+    text-align: right;
+    margin: 0 42px;
 }
 
 @media all and (max-width: 915px) {
       #servers, #community {
-        display: inline-block;
-        text-align: center
+        text-align: center;
+        margin: 0;
     }  
 }
 
@@ -115,8 +113,14 @@ a.logout {
 .feedcolumn {
     display: inline-block;
     vertical-align: top;
-    margin: auto;
+    margin: auto;  
     width: 48%;
+}
+
+@media all and (max-width: 915px) {
+    .feedcolumn {
+        width: 85%;
+    }
 }
 
 .eventholder {
@@ -171,6 +175,12 @@ a.logout {
     background-color: #DED4B9;
     border-radius: 5px;
     font-size: 12px;
+}
+
+@media all and (max-width: 915px) {
+    #footer {
+        width: 95%;
+    }
 }
 
 #footer a {
