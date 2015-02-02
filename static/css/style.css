@@ -279,6 +279,7 @@ span .status {
     width: 225px;
     height: 100px;
     overflow: hidden;
+    text-align: center;
 }
 
 .smallbox a {
