@@ -16,11 +16,26 @@ em { font-style: italic; }
 /* Main Elements */
 #container { }
 
-#middle { width: 100%; background-color: #DED4B9; text-align: center; padding-bottom: 15px;}
+#middle { 
+    text-align: center;
+    background-color: #DED4B9; 
+    padding-bottom: 15px;
+}
 
-#servers {
-    padding: 0px 44px;
-    text-align: right;
+@media all and (min-width: 915px) {
+    #servers, #community {
+        display: inline-block;
+        max-width: 915px;
+        text-align: right;
+        margin: 0 42px;
+    }
+}
+
+@media all and (max-width: 915px) {
+      #servers, #community {
+        display: inline-block;
+        text-align: center
+    }  
 }
 
 #wrapper {
