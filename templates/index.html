@@ -1,103 +1,86 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Cafe of Broken Dreams</title>
-        <link href='http://fonts.googleapis.com/css?family=Poiret+One|Open+Sans|Oswald:700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/static/css/reset.css" />
-        <link rel="stylesheet" href="/static/css/style.css" />
-        <link rel="icon" type="image/png" href="/static/img/mugicon.png">
-    </head>
-    <body>
-        <div id="middle">
-            <div id="wrapper">
-                <div id="bio">
-                    <p>The <span class="title">Cafe of Broken Dreams</span> is a <s>elite</s> group of video-gamers, hailing from the pre F2P-era of Team Fortress 2. We play an assortment of video games now and sometimes host events. Most of the time we sit in IRC and complain about how bad video games have become. Join us!</p>
-                </div><!-- bio -->
-                    {% if serverinfo != False %}
-                <span class="miniheader">servers</span>
-                <div id="servers">
-                        {% for server in serverinfo.keys() %}
-                        <div id="{{ server }}" class="server" style="background-image:url('../{{ backgrounds[server] }}');">
-                            <span class="info">
-                                <span class="game">{{ serverinfo[server]['gamename'] }}</span>
-                                <span class="ip">
-                                    <a href="steam://connect/{{ serverinfo[server]['ip'] }}:{{ serverinfo[server]['port'] }}">{{ serverinfo[server]['ip'] }}:{{ serverinfo[server]['port'] }}</a>
-                                </span>
-                                <span class="status">{% if not serverinfo[server]['error'] %}{{ serverinfo[server]['numplayers'] }}/{{ serverinfo[server]['maxplayers'] }} [<em>{{ serverinfo[server]['map'] }}</em>]{% else %}server is down!{% endif %}</span>
-                            </span><!-- info -->
-                        </div><!-- server -->
-                        {% endfor %}
-                </div><!-- servers -->
+{% extends "default.html" %}
+
+{% block middle %}
+        {% if serverinfo != False %}
+    <span class="miniheader">servers</span>
+    <div id="servers">
+            {% for server in serverinfo.keys() %}
+            <div id="{{ server }}" class="server" style="background-image:url('../{{ backgrounds[server] }}');">
+                <span class="info">
+                    <span class="game">{{ serverinfo[server]['gamename'] }}</span>
+                    <span class="ip">
+                        <a href="steam://connect/{{ serverinfo[server]['ip'] }}:{{ serverinfo[server]['port'] }}">{{ serverinfo[server]['ip'] }}:{{ serverinfo[server]['port'] }}</a>
+                    </span>
+                    <span class="status">{% if not serverinfo[server]['error'] %}{{ serverinfo[server]['numplayers'] }}/{{ serverinfo[server]['maxplayers'] }} [<em>{{ serverinfo[server]['map'] }}</em>]{% else %}server is down!{% endif %}</span>
+                </span><!-- info -->
+            </div><!-- server -->
+            {% endfor %}
+    </div><!-- servers -->
+        {% endif %}
+    <span class="miniheader">community</span>
+    <div id="community">
+        <div id="irc" class="smallbox">
+            <span class="name">IRC</span>
+            <span class="link">irc.gamesurge.net (<a href="https://gamesurge.net/chat/cafe">web chat</a>)</span>
+            <span class="sublink">#cafe - <a href="http://cafeofbrokendreams.com/etc/irc/cafe.html">stats</a></span>
+        </div><!-- irc -->
+        <div id="mumble" class="smallbox">
+            <span class="name">Mumble</span>
+            <span class="link"><a href="mumble://cafeofbrokendreams.com:9010/?version=1.2.0&title=The%20Speakeasy&url=http://cafeofbrokendreams.com">mumble.cafeofbrokendreams.com</a></span>
+            <span class="sublink">port 9010</span>
+        </div><!-- mumble -->
+        <div id="cafegroup" class="smallbox">
+            <span class="name">Cafe SteamGroup</span>
+            <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams">@ Steam Community</a></span>
+        </div><!-- cafegroup -->
+    </div><!-- community -->
+{% endblock %}
+
+{% block bottom %}
+    <p class="midtext">The bounty hunters, who are gathering in channel "#CAFE", will play freely without fear of risky things. They must create new dreams and films by breaking traditional styles. The work, which becomes a new genre itself, will be called... the <strong>CAFE OF BROKEN DREAMS</strong> </p>
+    <div id="newswrapper">
+        <div class="feedcolumn">
+            <p class="updatetime">Last checked: {{ updatetime }}</p>
+            <span class="bottomminiheader">events</span>
+            <div id="events">
+                {% if eventlist == [] %}
+                <div class="eventholder">
+                    <p style="text-align: center;">- No events scheduled -</p>
+                </div>
+                {% endif %}
+                {% for event in eventlist %}
+                <div class="eventholder">
+                    <!--<span class="eventimage"><img src="/static/img/cake.png" alt="cake" /></span>-->
+                    <span class="eventtitle"><a href="{{ event.link }}">{{ event.title }}</a></span>
+                    <span class="eventdate">{{ event.date }}</span>
+                    {% if event.image %}
+                        <div class="eventimage"><img src="{{ event.image }}"></img></div>
                     {% endif %}
-                <span class="miniheader">community</span>
-                <div id="community">
-                    <div id="irc" class="smallbox">
-                        <span class="name">IRC</span>
-                        <span class="link">irc.gamesurge.net (<a href="https://gamesurge.net/chat/cafe">web chat</a>)</span>
-                        <span class="sublink">#cafe - <a href="http://cafeofbrokendreams.com/etc/irc/cafe.html">stats</a></span>
-                    </div><!-- irc -->
-                    <div id="mumble" class="smallbox">
-                        <span class="name">Mumble</span>
-                        <span class="link"><a href="mumble://cafeofbrokendreams.com:9010/?version=1.2.0&title=The%20Speakeasy&url=http://cafeofbrokendreams.com">mumble.cafeofbrokendreams.com</a></span>
-                        <span class="sublink">port 9010</span>
-                    </div><!-- mumble -->
-                    <div id="cafegroup" class="smallbox">
-                        <span class="name">Cafe SteamGroup</span>
-                        <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams">@ Steam Community</a></span>
-                    </div><!-- cafegroup -->
-                </div><!-- community -->
-            </div><!-- wrapper -->
-        </div><!-- middle -->
-        <div id="bottom">
-            <p class="midtext">The bounty hunters, who are gathering in channel "#CAFE", will play freely without fear of risky things. They must create new dreams and films by breaking traditional styles. The work, which becomes a new genre itself, will be called... the <strong>CAFE OF BROKEN DREAMS</strong> </p>
-            <div id="newswrapper">
-                <div class="feedcolumn">
-                    <p class="updatetime">Last checked: {{ updatetime }}</p>
-                    <span class="bottomminiheader">events</span>
-                    <div id="events">
-                        {% if eventlist == [] %}
-                        <div class="eventholder">
-                            <p style="text-align: center;">- No events scheduled -</p>
-                        </div>
-                        {% endif %}
-                        {% for event in eventlist %}
-                        <div class="eventholder">
-                            <!--<span class="eventimage"><img src="/static/img/cake.png" alt="cake" /></span>-->
-                            <span class="eventtitle"><a href="{{ event.link }}">{{ event.title }}</a></span>
-                            <span class="eventdate">{{ event.date }}</span>
-                            {% if event.image %}
-                                <div class="eventimage"><img src="{{ event.image }}"></img></div>
-                            {% endif %}
-                            <span class="eventdetails">
-                                {{ event.content|safe }}
-                            </span><!-- eventdetails -->
-                            <span class="eventinfo">{{ event.subline|safe }} | <a href="{{ event.link }}">Permalink</a></span>
-                        </div><!-- eventholder -->
-                        {% endfor %}
-                    </div><!-- events -->
-                    <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams/events">See All...</a></span>
-                </div><!-- feedcolumn -->
-                <div class="feedcolumn">
-                    <span class="bottomminiheader">announcements</span>
-                    <div id="announcements">
-                        {% for news in newslist %}
-                        <div class="eventholder">
-                            <!--<span class="eventimage"><img src="/static/img/cake.png" alt="cake" /></span>-->
-                            <span class="eventtitle"><a href="{{ news.link }}">{{ news.title }}</a></span>
-                            <span class="eventdate">{{ news.date }}</span>
-                            <span class="eventdetails">
-                                <p>{{ news.content|safe }}</p><br />
-                            </span><!-- eventdetails -->
-                            <span class="eventinfo"><a href="{{ news.link }}">Permalink</a></span>
-                        </div><!-- eventholder -->
-                        {% endfor %}
-                    </div><!-- announcements -->
-                    <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams/announcements">See All...</a></span>
-                </div><!-- feedcolumn -->
-            </div><!-- newswrapper -->
-        </div> <!-- bottom -->
-        <div id="footer">
-            <span class="foottxt"><strong>Cafe&nbsp;of&nbsp;Broken&nbsp;Dreams</strong>&nbsp;est.&nbsp;2009 | <a href="http://steampowered.com">Powered&nbsp;by&nbsp;Steam</a> | <a href="https://github.com/GordonsBeard/cafe-flask">Github&nbsp;Repo</a></span>
-        </div><!-- footer -->
-    </body>
-</html>
+                    <span class="eventdetails">
+                        {{ event.content|safe }}
+                    </span><!-- eventdetails -->
+                    <span class="eventinfo">{{ event.subline|safe }} | <a href="{{ event.link }}">Permalink</a></span>
+                </div><!-- eventholder -->
+                {% endfor %}
+            </div><!-- events -->
+            <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams/events">See All...</a></span>
+        </div><!-- feedcolumn -->
+        <div class="feedcolumn">
+            <span class="bottomminiheader">announcements</span>
+            <div id="announcements">
+                {% for news in newslist %}
+                <div class="eventholder">
+                    <!--<span class="eventimage"><img src="/static/img/cake.png" alt="cake" /></span>-->
+                    <span class="eventtitle"><a href="{{ news.link }}">{{ news.title }}</a></span>
+                    <span class="eventdate">{{ news.date }}</span>
+                    <span class="eventdetails">
+                        <p>{{ news.content|safe }}</p><br />
+                    </span><!-- eventdetails -->
+                    <span class="eventinfo"><a href="{{ news.link }}">Permalink</a></span>
+                </div><!-- eventholder -->
+                {% endfor %}
+            </div><!-- announcements -->
+            <span class="link"><a href="http://steamcommunity.com/groups/cafeofbrokendreams/announcements">See All...</a></span>
+        </div><!-- feedcolumn -->
+    </div><!-- newswrapper -->
+{% endblock %}
