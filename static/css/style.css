@@ -29,7 +29,7 @@ em { font-style: italic; }
     margin: 0 42px;
 }
 
-@media all and (max-width: 915px) {
+@media all and (max-width: 915px), handheld and (orientation: portrait) {
       #servers, #community {
         text-align: center;
         margin: 0;
@@ -117,7 +117,7 @@ a.logout {
     width: 48%;
 }
 
-@media all and (max-width: 915px) {
+@media all and (max-width: 915px), handheld and (orientation: portrait) {
     .feedcolumn {
         width: 85%;
     }
@@ -177,7 +177,7 @@ a.logout {
     font-size: 12px;
 }
 
-@media all and (max-width: 915px) {
+@media all and (max-width: 915px), handheld and (orientation: portrait) {
     #footer {
         width: 95%;
     }
