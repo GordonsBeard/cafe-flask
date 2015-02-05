@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        {% block head %}<title>Cafe of Broken Dreams</title>{% endblock %}
+        <link href='http://fonts.googleapis.com/css?family=Poiret+One|Open+Sans|Oswald:700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/static/css/reset.css" />
+        <link rel="stylesheet" href="/static/css/style.css" />
+        <link rel="icon" type="image/png" href="/static/img/mugicon.png">
+    </head>
+    <body>
+        <div id="middle">
+            <div id="wrapper">
+                {% block bio %}
+                    <div id="bio">
+                        <p>The <span class="title">Cafe of Broken Dreams</span> is a <s>elite</s> group of video-gamers, hailing from the pre F2P-era of Team Fortress 2. We play an assortment of video games now and sometimes host events. Most of the time we sit in IRC and complain about how bad video games have become. Join us!</p>
+                    </div><!-- bio -->
+                {% endblock %}
+                {% block middle %} {% endblock %}
+            </div><!-- wrapper -->
+        </div><!-- middle -->
+        <div id="bottom">
+            {% block midtext %}
+                <p class="midtext">The bounty hunters, who are gathering in channel "#CAFE", will play freely without fear of risky things. They must create new dreams and films by breaking traditional styles. The work, which becomes a new genre itself, will be called... the <strong>CAFE OF BROKEN DREAMS</strong> </p>
+            {% endblock %}
+            {% block bottom %} {% endblock %}
+        </div> <!-- bottom -->
+        <div id="footer">
+            <span class="foottxt"><strong>Cafe&nbsp;of&nbsp;Broken&nbsp;Dreams</strong>&nbsp;est.&nbsp;2009 | <a href="http://steampowered.com">Powered&nbsp;by&nbsp;Steam</a> | <a href="https://github.com/GordonsBeard/cafe-flask">Github&nbsp;Repo</a></span>
+        </div><!-- footer -->
+    </body>
+</html>
