@@ -29,7 +29,7 @@ def req_server_info():
 
     # For each server, loop through status.
     with open(servercfg_filename) as serverlist:
-        servers = eval(serverlist.read())
+        servers = dict( eval( serverlist.read() ) )
         for server in servers.keys():
             ip = servers[server]['ip']
             port = servers[server]['port']
