@@ -10,7 +10,7 @@ import urllib2                # url access interface
 import caching                # custom caching module
 
 COMMUNITY_CACHE_FILE  = "community_data.cache"  # filename to cache the community data to
-CACHE_EXPIRE_TIME     = 3600                    # time between cache creation and expiration (15 minutes)
+CACHE_EXPIRE_TIME     = 3600                    # time between cache creation and expiration (1 hour)
 CONTENT_ONLY_TAG      = "?content_only=true"    # query to only receive XML content from a steam URL
 EXPANDED_MONTHS       = { "Jan" : "January",    # expanded form of 3 letter months
                           "Feb" : "February",

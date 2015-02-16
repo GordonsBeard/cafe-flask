@@ -1,16 +1,15 @@
 # server_status.py
 # Author:       Gordon
 # Description:  Returns the status of all SRCDS servers defined in servers.cfg
-# Last Update:  2/1/2015
-from SourceLib.SourceQuery import SourceQuery as SQ     # SourceLib does all the heavy lifting for us
+# Last Update:  2/15/2015
+import caching
 import errno, os
+from SourceLib.SourceQuery import SourceQuery as SQ     # SourceLib does all the heavy lifting for us
 from socket import error as socket_error
 
-import caching
-
-serverstatus_filename = 'server_status.cache'
-servercfg_filename = 'servers.cfg'
-seconds_kept_fresh = 120
+serverstatus_filename = 'server_status.cache'           # filename to cache the server data to
+servercfg_filename = 'servers.cfg'                      # filename of the server ip/games
+seconds_kept_fresh = 120                                # number of seconds to keep fresh (2 minutes)
 
 def get_server_status():
     """ Returns status dictionary with server info """
