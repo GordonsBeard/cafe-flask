@@ -147,7 +147,7 @@ a.logout {
     margin-bottom: 12px;
 }
 
-.eventdetails p { line-height: 140%; margin: .5em; }
+.eventdetails { line-height: 140%; margin: .5em; }
 .eventdetails ul { line-height: 150%; margin: .5em; list-style: circle inside; }
 
 .eventimage {
