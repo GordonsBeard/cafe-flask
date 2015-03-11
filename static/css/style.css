@@ -313,3 +313,57 @@ span .status {
 #mumble > span.name, #mumble .link, #mumble .sublink { color:#ABCDEF; }
 #cafegroup { background-image: url('../img/cafe_steamgroup.jpg'); }
 #cafegroup > span.name { color:#BFBFBF; }
+
+#uploader_rules .head {
+    font-weight: bold;
+}
+
+#uploader_rules .small {
+    text-align: left;
+    font-size: 8pt;
+}
+
+#uploader_rules p {
+    margin: 1em auto;
+
+    text-align: left;
+    line-height: 140%;
+}
+
+#uploader_rules ul {
+    margin: 1em auto;
+
+    text-align: left;
+    list-style: circle inside;
+    line-height: 140%;
+}
+
+#uploader_div {
+    width: 100%;
+
+    text-align: left;
+    font-size: 10pt;
+}
+
+#uploader_div p {
+    line-height: 140%;
+}
+
+#uploader_form input {
+    margin: 0.5em;
+}
+
+#alphatestthursday p {
+    margin-bottom: 1em;
+
+    text-align: left;
+    line-height: 140%;
+}
+
+#alphatestthursday ul {
+    margin: 1em;
+
+    text-align: left;
+    list-style: circle inside;
+    line-height: 140%;
+}

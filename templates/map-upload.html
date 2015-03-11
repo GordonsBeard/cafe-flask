@@ -1,0 +1,53 @@
+{% extends "default.html" %}
+
+{% block middle %}
+    <span class="miniheader">rules &amp; info &amp; stuff</span>
+    <div id="uploader_rules">
+        <span class="head">Have you ever wanted to play a bad map that you or someone else made on our Team Fortress 2 server? Now you can!</span>
+        <br/><br/>
+        <p>The Cafe of Broken Dreams Map Uploader&#8482; allows you to upload custom Team Fortress 2 maps right to the Cafe of Broken Dreams. Want to test your map on our server? Angry that we don't already have ctf_mach4? Got a sudden urge to play ctf_DUNGEONS*? Now your wildest dreams can come true, as long as you follow these rules:</p>
+        <ul>
+            <li>Here are some rules.</li>
+            <li>These are things like "don't upload maps that are intentionally bad".</li>
+            <li>We could add Steam OpenID back and use it to enforce some rules or ban people from the uploader.</li>
+            <li>This uploader only accepts valid BSP files.</li>
+        </ul>
+        <span class="small">* Please do not upload ctf_DUNGEONS.</span>
+    </div>
+
+    <span class="miniheader">map uploader</span>
+    <div id="uploader_div">
+        {% if False %}
+        <form id="uploader_form" action="/map-upload" method="post">
+            <input type="hidden" name="action" value="upload">
+            <label for="mapfile"><strong>Map File:</strong></label> <input type="file" name="mapfile" id="mapfile" required><br/>
+            <input type="checkbox" name="signupatt" id="signupatt"> <label for="signupatt">Sign my map up for Alpha Test Thursday</label><br/>
+            <input type="checkbox" name="agree" id="agree" required> <label for="agree"><strong>I agree to the Map Uploader rules</strong></label><br/>
+            <input type="submit" value="Upload">
+        </form>
+        {% else %}
+        <p>You've already uploaded a map: <strong>ctf_DUNGEONS</strong>. You are signed up for Alpha Test Tuesday.</p>
+        <p>You must remove this map before you can upload another one. Removing a map signed up for Alpha Test Tuesday will lose your spot. This process cannot be reversed.</p>
+        <form id="uploader_form" action="/map-upload" method="post">
+            <input type="hidden" name="action" value="remove">
+            <input type="checkbox" name="agree" id="agree" required> <label for="agree">I'm sure I want to remove my map</label><br/>
+            <input type="submit" value="Remove my Map">
+        </form>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block bottom %}
+    <span class="bottomminiheader">alpha test thursday</span>
+    <div id="alphatestthursday">
+        <p>The Cafe of Broken Dreams hosts <del>Bad Map</del> Alpha Test Thursday every week, testing a variety of custom Team Fortress 2 maps. By uploading a map above, you can sign up to participate, or you can show up at any point during the night.</p>
+        <p>The following maps are registered for Alpha Test Thursday:</p>
+
+        <ul id="maplist">
+            <li>ctf_DUNGEONS</li>
+            <li>arena_draft</li>
+            <li>arena_hardhat</li>
+            <li>cp_kanyf_____b</li>
+        </ul>
+    </div>
+{% endblock %}
