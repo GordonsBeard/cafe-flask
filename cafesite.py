@@ -11,6 +11,10 @@ app.config.from_pyfile('settings.cfg')
 def get_map_images(serverdict):
     bg_images = {}
     for server, details in serverdict.items():
+        # Skip this server if it's down
+        if not serverdict[server].has_key( 'map' ) :
+            continue
+
         mapfilename = 'static/img/maps/{0}.jpg'.format(serverdict[server]['map'])
         map_exists = os.path.exists( mapfilename )
 
