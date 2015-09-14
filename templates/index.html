@@ -4,7 +4,7 @@
         {% if serverinfo != False %}
     <span class="miniheader">servers</span>
     <div id="servers">
-            {% for server in serverinfo.keys() %}
+            {% for server in serverinfo.keys() %}{% if not serverinfo[server]['error'] %}
             <div id="{{ server }}" class="server" style="background-image:url('../{{ backgrounds[server] }}');">
                 <span class="info">
                     <span class="game">{{ serverinfo[server]['gamename'] }}</span>
@@ -14,7 +14,7 @@
                     <span class="status">{% if not serverinfo[server]['error'] %}{{ serverinfo[server]['numplayers'] }}/{{ serverinfo[server]['maxplayers'] }} [<em>{{ serverinfo[server]['map'] }}</em>]{% else %}server is down!{% endif %}</span>
                 </span><!-- info -->
             </div><!-- server -->
-            {% endfor %}
+            {% endif %}{% endfor %}
     </div><!-- servers -->
         {% endif %}
     <span class="miniheader">community</span>

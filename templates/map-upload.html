@@ -21,13 +21,12 @@
         <form id="uploader_form" action="/map-upload" method="post">
             <input type="hidden" name="action" value="upload">
             <label for="mapfile"><strong>Map File:</strong></label> <input type="file" name="mapfile" id="mapfile" required><br/>
-            <input type="checkbox" name="signupatt" id="signupatt"> <label for="signupatt">Sign my map up for Alpha Test Thursday</label><br/>
             <input type="checkbox" name="agree" id="agree" required> <label for="agree"><strong>I agree to the Map Uploader rules</strong></label><br/>
             <input type="submit" value="Upload">
         </form>
         {% else %}
-        <p>You've already uploaded a map: <strong>ctf_DUNGEONS</strong>. You are signed up for Alpha Test Tuesday.</p>
-        <p>You must remove this map before you can upload another one. Removing a map signed up for Alpha Test Tuesday will lose your spot. This process cannot be reversed.</p>
+        <p>You've already uploaded a map: <strong>ctf_DUNGEONS</strong>.</p>
+        <p>You must remove this map before you can upload another one.</p>
         <form id="uploader_form" action="/map-upload" method="post">
             <input type="hidden" name="action" value="remove">
             <input type="checkbox" name="agree" id="agree" required> <label for="agree">I'm sure I want to remove my map</label><br/>
@@ -38,16 +37,5 @@
 {% endblock %}
 
 {% block bottom %}
-    <span class="bottomminiheader">alpha test thursday</span>
-    <div id="alphatestthursday">
-        <p>The Cafe of Broken Dreams hosts <del>Bad Map</del> Alpha Test Thursday every week, testing a variety of custom Team Fortress 2 maps. By uploading a map above, you can sign up to participate, or you can show up at any point during the night.</p>
-        <p>The following maps are registered for Alpha Test Thursday:</p>
 
-        <ul id="maplist">
-            <li>ctf_DUNGEONS</li>
-            <li>arena_draft</li>
-            <li>arena_hardhat</li>
-            <li>cp_kanyf_____b</li>
-        </ul>
-    </div>
 {% endblock %}
