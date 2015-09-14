@@ -104,6 +104,11 @@ class SteamGroup :
       "desc"      : str( bsdata.p.find_next( "p" ) ).replace( '</br>', '' ),
       "img"       : str( bsdata.img["src"] )
     }
+
+    if data['desc'] == 'None' :
+        data['desc'] = data['headline']
+        data['headline'] = ''
+
     return data
 
   # reads through an xml response and builds a list of all event ids
@@ -185,10 +190,7 @@ class Announcement :
 
 class Event :
   def __init__( self, title, date, headline, desc, img, link ) :
-    # if we don't get a server event, set the description to the headline
-    if desc == None :
-        desc = headline
-        headline = ""
+    print( "desc: '{}'; headline: '{}'".format( desc, headline ) )
 
     self.title    = title
     self.date     = date
