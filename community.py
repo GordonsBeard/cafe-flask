@@ -185,6 +185,11 @@ class Announcement :
 
 class Event :
   def __init__( self, title, date, headline, desc, img, link ) :
+    # if we don't get a server event, set the description to the headline
+    if desc == None :
+        desc = headline
+        headline = ""
+
     self.title    = title
     self.date     = date
     self.subline  = _format_eventinfo_to_subline( headline )
