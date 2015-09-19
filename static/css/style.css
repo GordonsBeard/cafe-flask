@@ -313,3 +313,5 @@ span .status {
 #mumble > span.name, #mumble .link, #mumble .sublink { color:#ABCDEF; }
 #cafegroup { background-image: url('../img/cafe_steamgroup.jpg'); }
 #cafegroup > span.name { color:#BFBFBF; }
+#cafemakers { background-image: url('../img/makers.png'); }
+#cafemakers > span.name { color: #FF6060; }
