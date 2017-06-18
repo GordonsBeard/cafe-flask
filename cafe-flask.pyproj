@@ -11,12 +11,12 @@
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{789894c7-04a9-4a11-a6b5-3f4435165112};{1b580a1a-fdb3-4b32-83e1-6407eb2722e6};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Web launcher</LaunchProvider>
-    <InterpreterId>{86869602-a6bc-4336-9fe7-cf5b8226e208}</InterpreterId>
-    <InterpreterVersion>2.7</InterpreterVersion>
+    <InterpreterId>MSBuild|{86869602-a6bc-4336-9fe7-cf5b8226e208}|$(MSBuildProjectFullPath)</InterpreterId>
     <PythonWsgiHandler>{StartupModule}.wsgi</PythonWsgiHandler>
     <UseIISExpress>true</UseIISExpress>
     <WebBrowserUrl>http://localhost</WebBrowserUrl>
     <WebBrowserPort>5000</WebBrowserPort>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -55,7 +55,6 @@
   <ItemGroup>
     <Interpreter Include="env\">
       <Id>{86869602-a6bc-4336-9fe7-cf5b8226e208}</Id>
-      <BaseInterpreter>{9a7a9026-48c1-4688-9d5d-e5699d47d074}</BaseInterpreter>
       <Version>2.7</Version>
       <Description>env (Python 64-bit 2.7)</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
@@ -105,4 +104,5 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>

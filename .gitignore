@@ -89,3 +89,7 @@ SourceLib/
 flask-sqlalchemy/
 venv/
 maps/
+/.vs
+/Backup
+/env
+/obj
