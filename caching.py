@@ -1,5 +1,5 @@
 # caching.py
-# Author:       Lancey
+# Author:       Lana
 # Description:  Provides consistent rules and support for caching and retrieving data
 # Last Update:  1/30/2015
 import cPickle as pickle    # cPickle is faster and better than regular pickle

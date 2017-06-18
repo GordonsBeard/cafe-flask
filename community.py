@@ -1,5 +1,5 @@
 # community.py
-# Author:       Lancey
+# Author:       Lana
 # Description:  Provides wrappers for interfacing with the Steam Community
 # Last Update:  1/30/2015
 from bs4 import BeautifulSoup # BeautifulSoup for XML parsing (probably overkill)
