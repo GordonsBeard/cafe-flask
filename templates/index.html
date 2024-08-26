@@ -1,20 +1,19 @@
 {% extends "default.html" %}
 
 {% block middle %}
-        {% if serverinfo != False %}
+    <br /><br />
+    {% if serverinfo != None %}
     <span class="miniheader">servers</span>
     <div id="servers">
-            {% for server in serverinfo.keys() %}{% if not serverinfo[server]['error'] %}
-            <div id="{{ server }}" class="server" style="background-image:url('../{{ backgrounds[server] }}');">
-                <span class="info">
-                    <span class="game">{{ serverinfo[server]['gamename'] }}</span>
-                    <span class="ip">
-                        <a href="steam://connect/{{ serverinfo[server]['ip'] }}:{{ serverinfo[server]['port'] }}">{{ serverinfo[server]['ip'] }}:{{ serverinfo[server]['port'] }}</a>
-                    </span>
-                    <span class="status">{{ serverinfo[server]['numplayers'] }}/{{ serverinfo[server]['maxplayers'] }} [<em>{{ serverinfo[server]['map'] }}</em>]</span>
-                </span><!-- info -->
-            </div><!-- server -->
-            {% endif %}{% endfor %}
+        <div id="tf2" class="server">
+            <span class="info">
+                <span class="game">Team Fortress 2</span>
+                <span class="ip">
+                    <a href="steam://connect/66.150.214.212:27015">cafeofbrokendreams.com:27015</a>
+                </span>
+                <span class="status">Current Players: {{ serverinfo["tf2"]['players'] }} / 24</span>
+            </span><!-- info -->
+        </div><!-- server -->
     </div><!-- servers -->
         {% endif %}
     <span class="miniheader">community</span>

@@ -223,7 +223,7 @@ a.logout {
 }
 
 /* Server styling */ 
-#tf2 { }
+#tf2 { background-image: url("/static/img/tf2_default.png"); }
 #mvm { }
 #sven { }
 #csgo { }
